@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsDesktopApp", "TravelExpertsDesktopApp\TravelExpertsDesktopApp.csproj", "{BAD26560-4787-4465-BDE3-C9891F18010A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD26560-4787-4465-BDE3-C9891F18010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD26560-4787-4465-BDE3-C9891F18010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD26560-4787-4465-BDE3-C9891F18010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD26560-4787-4465-BDE3-C9891F18010A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
