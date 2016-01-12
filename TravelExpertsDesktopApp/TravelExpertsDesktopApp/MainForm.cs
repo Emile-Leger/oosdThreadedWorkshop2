@@ -37,8 +37,9 @@ namespace TravelExpertsDesktopApp
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("y u no exit?");
             this.Close();
-        }        
+        }
+
+             
     }
 }

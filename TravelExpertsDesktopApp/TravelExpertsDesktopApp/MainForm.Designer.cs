@@ -125,6 +125,7 @@
             this.btnExit.Text = "Exit Program";
             this.btnExit.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnExit.TileCount = 0;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDelete
             // 
