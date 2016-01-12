@@ -10,3 +10,12 @@ c:\users\433080\documents\visual studio 2013\Projects\TravelExpertsDesktopApp\Tr
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.exe.config
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.exe
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.pdb
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.exe.config
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.pdb
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.Properties.Resources.resources
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.csproj.GenerateResource.Cache
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.exe
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.pdb
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\MetroFramework.dll
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.exe
