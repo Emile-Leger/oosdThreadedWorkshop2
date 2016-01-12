@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,34 @@ using System.Windows.Forms;
 
 namespace TravelExpertsDesktopApp
 {
+
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
+        const string ADD_MESSAGE = "Enter Package Details";
+        const string EDIT_MESSAGE = "Edit Package Details";
+
         public MainForm()
         {
             InitializeComponent();
+            this.StyleManager = msmStyle;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddEdit myForm = new frmAddEdit(ADD_MESSAGE);
+            myForm.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {            
+            frmAddEdit myForm = new frmAddEdit(EDIT_MESSAGE);
+            myForm.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("y u no exit?");
+            this.Close();
+        }        
     }
 }
