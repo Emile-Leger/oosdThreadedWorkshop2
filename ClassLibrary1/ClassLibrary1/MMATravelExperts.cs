@@ -14,7 +14,7 @@ namespace TravelExpertsDB
         // return instance of SqlConnection
         {
             //Warning Warning Connection String Chaanged .. Added Password!
-            string connectionString = "Data Source=localhost\\sait;Initial Catalog=TravelExperts;User ID=sa;Password=sa";
+            string connectionString = "Data Source=localhost\\sait;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

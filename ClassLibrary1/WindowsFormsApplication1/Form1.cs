@@ -30,9 +30,15 @@ namespace TravelExpertsDB
             //pkg.PkgAgencyCommission=150.00M;
             //TravelExpertsDB.TravelExpertsDB.AddPackage(pkg);
 
-
-            List<Product> prod = TravelExpertsDB.GetProductsFromPackageId(4);
-            DGV.DataSource = prod;
+            try
+            {
+                List<Product> prod = TravelExpertsDB.GetProductsFromPackageId(4);
+                DGV.DataSource = prod;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
             //MessageBox.Show(test.ToString());

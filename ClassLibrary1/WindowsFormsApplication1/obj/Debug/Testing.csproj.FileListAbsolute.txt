@@ -9,3 +9,14 @@ C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\WindowsForms
 C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\WindowsFormsApplication1\obj\Debug\TravelExpertsDB.Form1.resources
 C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\WindowsFormsApplication1\obj\Debug\TravelExpertsDB.Properties.Resources.resources
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\bin\Debug\ClassLibrary1.dll
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\bin\Debug\ClassLibrary1.pdb
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\TravelExpertsDB.Form1.resources
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\TravelExpertsDB.Properties.Resources.resources
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\Testing.csproj.GenerateResource.Cache
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe

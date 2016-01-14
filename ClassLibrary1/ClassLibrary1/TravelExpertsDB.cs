@@ -140,7 +140,7 @@ namespace TravelExpertsDB
                 }
                 else
                 {
-                    return null;  // no customer returns null
+                    return null;  // no package returns null
                 }
                   
             }
@@ -349,7 +349,7 @@ namespace TravelExpertsDB
             String insertStatement = "INSERT INTO Products (PackageId, ProductSupplierId) VALUES (@PackageId, @ProductSupplierId)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@PackageId", pps.PackageId);
-            insertCommand.Parameters.AddWithValue("@ProductSupplierId", pps.PoductSupplierId);
+            insertCommand.Parameters.AddWithValue("@ProductSupplierId", pps.ProductSupplierId);
             try
             {
                 connection.Open();
@@ -393,11 +393,11 @@ namespace TravelExpertsDB
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             // new product listing
             updateCommand.Parameters.AddWithValue("@newnewPackageId", newPps.PackageId);
-            updateCommand.Parameters.AddWithValue("@newProductSupplierId", newPps.PoductSupplierId);
+            updateCommand.Parameters.AddWithValue("@newProductSupplierId", newPps.ProductSupplierId);
 
             // old product listing
             updateCommand.Parameters.AddWithValue("@oldPackageId", oldPps.PackageId);
-            updateCommand.Parameters.AddWithValue("@oldProductSupplierId", oldPps.PoductSupplierId);
+            updateCommand.Parameters.AddWithValue("@oldProductSupplierId", oldPps.ProductSupplierId);
 
             try
             {

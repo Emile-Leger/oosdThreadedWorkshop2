@@ -340,6 +340,7 @@
             this.cbPackages.StyleManager = this.msmStyle;
             this.cbPackages.TabIndex = 39;
             this.cbPackages.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbPackages.SelectedIndexChanged += new System.EventHandler(this.cbPackages_SelectedIndexChanged);
             // 
             // label1
             // 

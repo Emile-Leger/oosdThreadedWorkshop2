@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravelExpertsDB;
 
 namespace TravelExpertsDesktopApp
 {
@@ -20,7 +21,7 @@ namespace TravelExpertsDesktopApp
         public MainForm()
         {
             InitializeComponent();
-            this.StyleManager = msmStyle;
+            this.StyleManager = msmStyle;            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,11 +34,18 @@ namespace TravelExpertsDesktopApp
         {            
             frmAddEdit myForm = new frmAddEdit(EDIT_MESSAGE);
             myForm.ShowDialog();
+            
+           
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbPackages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
              

@@ -9,6 +9,6 @@ namespace TravelExpertsDB
     public class Package_Product_Supplier
     {
         public int PackageId { get; set; }          // pk  pk in Table Packages
-        public int PoductSupplierId { get; set; }   // pk  pk in Products_Suppliers
+        public int ProductSupplierId { get; set; }   // pk  pk in Products_Suppliers
     }
 }
