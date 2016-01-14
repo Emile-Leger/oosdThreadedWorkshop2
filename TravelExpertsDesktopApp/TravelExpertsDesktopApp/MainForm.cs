@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravelExpertsDB;
 
+
 namespace TravelExpertsDesktopApp
 {
 
@@ -21,7 +22,8 @@ namespace TravelExpertsDesktopApp
         public MainForm()
         {
             InitializeComponent();
-            this.StyleManager = msmStyle;            
+            this.StyleManager = msmStyle;
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,6 +50,7 @@ namespace TravelExpertsDesktopApp
 
         }
 
+       
              
     }
 }
