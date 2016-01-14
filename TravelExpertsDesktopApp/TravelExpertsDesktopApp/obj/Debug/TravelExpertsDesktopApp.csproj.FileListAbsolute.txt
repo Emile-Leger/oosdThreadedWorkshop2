@@ -19,3 +19,5 @@ C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\Trav
 C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.pdb
 C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\MetroFramework.dll
 C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.exe
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.frmAddEdit.resources
+C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.MainForm.resources
