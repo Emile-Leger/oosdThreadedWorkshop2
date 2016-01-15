@@ -701,5 +701,46 @@ namespace TravelExpertsDB
                 connection.Close();
             }
         }
+
+        /// <summary>
+        /// query for the Product and supplier names on a given Package ID
+        /// </summary>
+        /// <param name="packageId">the Package id</param>
+        /// <returns> list of productsupplier object containing the names of the products and suppliers</returns>
+        public static List<Product_Supplier> getProductSuppliers(int packageId)
+        {            
+            
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            string selectStatement = "select ProdName, SupName from Products_Suppliers, Packages_Products_Suppliers, Products, Suppliers "+
+                                     "where Packages_Products_Suppliers.PackageId = @PackageId and "+
+                                     "Packages_Products_Suppliers.ProductSupplierId = Products_Suppliers.ProductSupplierId and "+
+                                     "Products.ProductId = Products_Suppliers.ProductId and "+
+                                     "Suppliers.SupplierId = Products_Suppliers.SupplierId";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@PackageId", packageId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                
+                List<Product_Supplier> productSuppliersList = new List<Product_Supplier>();
+                while (reader.Read())
+                {
+                    Product_Supplier myPS = new Product_Supplier();
+                    myPS.ProductName = reader["ProdName"].ToString();
+                    myPS.SupName = reader["SupName"].ToString();
+                    productSuppliersList.Add(myPS);
+                }
+                return productSuppliersList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }      
     }
 }

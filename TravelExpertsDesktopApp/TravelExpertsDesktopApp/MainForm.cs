@@ -27,16 +27,14 @@ namespace TravelExpertsDesktopApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddEdit myForm = new frmAddEdit(ADD_MESSAGE);
-            myForm.ShowDialog();
-            
+            myForm.ShowDialog();            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {            
             frmAddEdit myForm = new frmAddEdit(EDIT_MESSAGE);
             myForm.ShowDialog();
-            
-           
+                       
         }
 
         private void btnExit_Click(object sender, EventArgs e)
