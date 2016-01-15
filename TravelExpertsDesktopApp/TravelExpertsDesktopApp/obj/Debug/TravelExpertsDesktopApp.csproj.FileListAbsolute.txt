@@ -31,3 +31,16 @@ C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\Trav
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.csproj.GenerateResource.Cache
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.dll
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.pdb
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.exe.config
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.exe
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.pdb
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.frmAddEdit.resources
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.MainForm.resources
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.Properties.Resources.resources
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.csproj.GenerateResource.Cache
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.exe
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\TravelExpertsDesktopApp.pdb
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\MetroFramework.dll
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.dll
+C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.pdb
