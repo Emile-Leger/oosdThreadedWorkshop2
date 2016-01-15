@@ -84,9 +84,9 @@ namespace TravelExpertsDB
                     pkg.PkgStartDate = (DateTime)reader["PkgStartDate"];
                     pkg.PkgEndDate = (DateTime)reader["PkgEndDate"];
                     pkg.PkgDesc = reader["PkgDesc"].ToString();
-                    pkg.PkgBasePrice=(Decimal)reader["PkgBasePrice"];
-                    pkg.PkgBasePrice = (Decimal)reader["PkgBasePrice"];
-                    pkg.PkgBasePrice = (Decimal)reader["PkgAgencyCommission"];
+                    pkg.PkgBasePrice=(decimal)reader["PkgBasePrice"];
+                    pkg.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                    pkg.PkgBasePrice = (decimal)reader["PkgAgencyCommission"];
                     ListPkg.Add(pkg);
                 }
             }
