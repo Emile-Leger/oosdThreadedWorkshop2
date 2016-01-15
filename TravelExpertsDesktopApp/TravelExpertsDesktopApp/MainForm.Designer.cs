@@ -292,7 +292,7 @@
             // lblStart
             // 
             this.lblStart.AutoSize = true;
-            this.lblStart.Location = new System.Drawing.Point(480, 83);
+            this.lblStart.Location = new System.Drawing.Point(480, 79);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(38, 13);
             this.lblStart.TabIndex = 43;
