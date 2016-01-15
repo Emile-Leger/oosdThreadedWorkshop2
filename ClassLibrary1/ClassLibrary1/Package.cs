@@ -18,5 +18,10 @@ namespace TravelExpertsDB
         public byte[] PkgImg;
         public List<Product_Supplier> productSuppliers;
 
+        public override string ToString()
+        {
+            return PkgName;
+        }
+
     }
 }

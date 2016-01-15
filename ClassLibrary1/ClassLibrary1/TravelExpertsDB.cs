@@ -711,7 +711,7 @@ namespace TravelExpertsDB
         {            
             
             SqlConnection connection = MMATravelExperts.GetConnection();
-            string selectStatement = "select ProdName, SupName from Products_Suppliers, Packages_Products_Suppliers, Products, Suppliers "+
+            string selectStatement = "select ProdName, SupName, Products.ProductId, Suppliers.SupplierId from Products_Suppliers, Packages_Products_Suppliers, Products, Suppliers "+
                                      "where Packages_Products_Suppliers.PackageId = @PackageId and "+
                                      "Packages_Products_Suppliers.ProductSupplierId = Products_Suppliers.ProductSupplierId and "+
                                      "Products.ProductId = Products_Suppliers.ProductId and "+
@@ -728,7 +728,9 @@ namespace TravelExpertsDB
                 {
                     Product_Supplier myPS = new Product_Supplier();
                     myPS.ProductName = reader["ProdName"].ToString();
+                    myPS.ProductId = (int)reader["ProductID"];
                     myPS.SupName = reader["SupName"].ToString();
+                    myPS.SupplierId = (int)reader["SupplierID"];
                     productSuppliersList.Add(myPS);
                 }
                 return productSuppliersList;
