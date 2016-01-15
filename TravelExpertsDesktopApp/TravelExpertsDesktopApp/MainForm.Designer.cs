@@ -63,7 +63,7 @@
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(653, 475);
+            this.metroTabControl1.Size = new System.Drawing.Size(861, 416);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabControl1.StyleManager = this.msmStyle;
             this.metroTabControl1.TabIndex = 0;
@@ -99,7 +99,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(645, 436);
+            this.metroTabPage1.Size = new System.Drawing.Size(853, 377);
             this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage1.StyleManager = this.msmStyle;
             this.metroTabPage1.TabIndex = 0;
@@ -115,7 +115,7 @@
             this.btnExit.ActiveControl = null;
             this.btnExit.CustomBackground = false;
             this.btnExit.CustomForeColor = false;
-            this.btnExit.Location = new System.Drawing.Point(184, 253);
+            this.btnExit.Location = new System.Drawing.Point(181, 253);
             this.btnExit.Name = "btnExit";
             this.btnExit.PaintTileCount = true;
             this.btnExit.Size = new System.Drawing.Size(118, 66);
@@ -132,7 +132,7 @@
             this.btnDelete.ActiveControl = null;
             this.btnDelete.CustomBackground = false;
             this.btnDelete.CustomForeColor = false;
-            this.btnDelete.Location = new System.Drawing.Point(60, 253);
+            this.btnDelete.Location = new System.Drawing.Point(57, 253);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.PaintTileCount = true;
             this.btnDelete.Size = new System.Drawing.Size(118, 66);
@@ -148,7 +148,7 @@
             this.btnAdd.ActiveControl = null;
             this.btnAdd.CustomBackground = false;
             this.btnAdd.CustomForeColor = false;
-            this.btnAdd.Location = new System.Drawing.Point(60, 178);
+            this.btnAdd.Location = new System.Drawing.Point(57, 178);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.PaintTileCount = true;
             this.btnAdd.Size = new System.Drawing.Size(118, 66);
@@ -165,7 +165,7 @@
             this.btnEdit.ActiveControl = null;
             this.btnEdit.CustomBackground = false;
             this.btnEdit.CustomForeColor = false;
-            this.btnEdit.Location = new System.Drawing.Point(184, 178);
+            this.btnEdit.Location = new System.Drawing.Point(181, 178);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.PaintTileCount = true;
             this.btnEdit.Size = new System.Drawing.Size(118, 66);
@@ -180,7 +180,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(367, 159);
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(364, 161);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 53;
@@ -189,6 +190,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(54, 107);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 13);
@@ -221,6 +223,7 @@
             // lblCommission
             // 
             this.lblCommission.AutoSize = true;
+            this.lblCommission.BackColor = System.Drawing.Color.White;
             this.lblCommission.Location = new System.Drawing.Point(480, 122);
             this.lblCommission.Name = "lblCommission";
             this.lblCommission.Size = new System.Drawing.Size(38, 13);
@@ -230,6 +233,7 @@
             // lblBasePrice
             // 
             this.lblBasePrice.AutoSize = true;
+            this.lblBasePrice.BackColor = System.Drawing.Color.White;
             this.lblBasePrice.Location = new System.Drawing.Point(480, 109);
             this.lblBasePrice.Name = "lblBasePrice";
             this.lblBasePrice.Size = new System.Drawing.Size(38, 13);
@@ -239,6 +243,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(364, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
@@ -248,6 +253,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(364, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
@@ -256,15 +262,16 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.BackColor = System.Drawing.Color.White;
             this.txtDescription.CustomBackground = true;
             this.txtDescription.CustomForeColor = false;
             this.txtDescription.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.txtDescription.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtDescription.Location = new System.Drawing.Point(367, 178);
+            this.txtDescription.Location = new System.Drawing.Point(364, 180);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(223, 141);
+            this.txtDescription.Size = new System.Drawing.Size(210, 141);
             this.txtDescription.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtDescription.StyleManager = this.msmStyle;
             this.txtDescription.TabIndex = 46;
@@ -274,6 +281,7 @@
             // lblEnd
             // 
             this.lblEnd.AutoSize = true;
+            this.lblEnd.BackColor = System.Drawing.Color.White;
             this.lblEnd.Location = new System.Drawing.Point(480, 96);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(38, 13);
@@ -283,6 +291,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(364, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
@@ -292,6 +301,7 @@
             // lblStart
             // 
             this.lblStart.AutoSize = true;
+            this.lblStart.BackColor = System.Drawing.Color.White;
             this.lblStart.Location = new System.Drawing.Point(480, 83);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(38, 13);
@@ -301,6 +311,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(364, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -345,6 +356,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(54, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 13);
@@ -355,7 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1253, 584);
+            this.ClientSize = new System.Drawing.Size(1153, 502);
             this.Controls.Add(this.metroTabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
