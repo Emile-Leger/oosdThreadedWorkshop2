@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.tpProdSupp = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btnExit = new MetroFramework.Controls.MetroTile();
             this.btnDelete = new MetroFramework.Controls.MetroTile();
@@ -50,26 +50,28 @@
             this.lblPkgName = new MetroFramework.Controls.MetroLabel();
             this.cbPackages = new MetroFramework.Controls.MetroComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.metroTabControl1.SuspendLayout();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.tpProdSupp.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroTabControl1
+            // tpProdSupp
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.CustomBackground = false;
-            this.metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Medium;
-            this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
-            this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(861, 416);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTabControl1.StyleManager = this.msmStyle;
-            this.metroTabControl1.TabIndex = 0;
-            this.metroTabControl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTabControl1.UseStyleColors = false;
+            this.tpProdSupp.Controls.Add(this.metroTabPage1);
+            this.tpProdSupp.Controls.Add(this.metroTabPage2);
+            this.tpProdSupp.CustomBackground = false;
+            this.tpProdSupp.FontSize = MetroFramework.MetroTabControlSize.Medium;
+            this.tpProdSupp.FontWeight = MetroFramework.MetroTabControlWeight.Light;
+            this.tpProdSupp.Location = new System.Drawing.Point(23, 63);
+            this.tpProdSupp.Name = "tpProdSupp";
+            this.tpProdSupp.SelectedIndex = 1;
+            this.tpProdSupp.Size = new System.Drawing.Size(861, 416);
+            this.tpProdSupp.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tpProdSupp.StyleManager = this.msmStyle;
+            this.tpProdSupp.TabIndex = 0;
+            this.tpProdSupp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tpProdSupp.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tpProdSupp.UseStyleColors = false;
             // 
             // metroTabPage1
             // 
@@ -363,12 +365,32 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Select a Travel Package";
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.CustomBackground = false;
+            this.metroTabPage2.HorizontalScrollbar = false;
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(853, 377);
+            this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTabPage2.StyleManager = null;
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Product Supplier Manager";
+            this.metroTabPage2.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTabPage2.VerticalScrollbar = false;
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1153, 502);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.tpProdSupp);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Movable = false;
@@ -376,7 +398,7 @@
             this.Resizable = false;
             this.StyleManager = this.msmStyle;
             this.Text = "Travel Package Manager";
-            this.metroTabControl1.ResumeLayout(false);
+            this.tpProdSupp.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.ResumeLayout(false);
@@ -385,7 +407,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl tpProdSupp;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Components.MetroStyleManager msmStyle;
         private MetroFramework.Controls.MetroTile btnExit;
@@ -407,6 +429,7 @@
         private MetroFramework.Controls.MetroLabel lblPkgName;
         private MetroFramework.Controls.MetroComboBox cbPackages;
         private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
 
 
 
