@@ -704,7 +704,10 @@ namespace TravelExpertsDB
 
         /// <summary>
         /// query for the Product and supplier names on a given Package ID
+<<<<<<< HEAD
         /// Emile,  debugged and working
+=======
+>>>>>>> master
         /// </summary>
         /// <param name="packageId">the Package id</param>
         /// <returns> list of productsupplier object containing the names of the products and suppliers</returns>
