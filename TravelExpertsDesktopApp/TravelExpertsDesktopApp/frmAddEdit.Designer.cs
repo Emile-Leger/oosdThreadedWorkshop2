@@ -34,15 +34,22 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.txtName = new MetroFramework.Controls.MetroTextBox();
+            this.txtPrice = new MetroFramework.Controls.MetroTextBox();
+            this.txtCommission = new MetroFramework.Controls.MetroTextBox();
+            this.txtDescription = new MetroFramework.Controls.MetroTextBox();
             this.btnConfirm = new MetroFramework.Controls.MetroTile();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
+            this.btnImg = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.lvProductSuppliers = new System.Windows.Forms.ListView();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Supplier = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ofdImage = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel2
@@ -153,116 +160,99 @@
             this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroLabel7.UseStyleColors = false;
             // 
-            // dateTimePicker1
+            // dtpStart
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(137, 113);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart.Location = new System.Drawing.Point(137, 113);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(200, 22);
+            this.dtpStart.TabIndex = 15;
             // 
-            // dateTimePicker2
+            // dtpEnd
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(137, 130);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 16;
+            this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnd.Location = new System.Drawing.Point(137, 130);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(200, 22);
+            this.dtpEnd.TabIndex = 16;
             // 
-            // metroTextBox1
+            // txtName
             // 
-            this.metroTextBox1.CustomBackground = false;
-            this.metroTextBox1.CustomForeColor = false;
-            this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.metroTextBox1.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.metroTextBox1.Location = new System.Drawing.Point(137, 78);
-            this.metroTextBox1.Multiline = false;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.Size = new System.Drawing.Size(200, 23);
-            this.metroTextBox1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.StyleManager = null;
-            this.metroTextBox1.TabIndex = 17;
-            this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.UseStyleColors = false;
+            this.txtName.CustomBackground = false;
+            this.txtName.CustomForeColor = false;
+            this.txtName.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.txtName.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.txtName.Location = new System.Drawing.Point(137, 78);
+            this.txtName.Multiline = false;
+            this.txtName.Name = "txtName";
+            this.txtName.SelectedText = "";
+            this.txtName.Size = new System.Drawing.Size(200, 23);
+            this.txtName.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtName.StyleManager = null;
+            this.txtName.TabIndex = 17;
+            this.txtName.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtName.UseStyleColors = false;
             // 
-            // metroTextBox2
+            // txtPrice
             // 
-            this.metroTextBox2.CustomBackground = false;
-            this.metroTextBox2.CustomForeColor = false;
-            this.metroTextBox2.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.metroTextBox2.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.metroTextBox2.Location = new System.Drawing.Point(137, 159);
-            this.metroTextBox2.Multiline = false;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.Size = new System.Drawing.Size(200, 23);
-            this.metroTextBox2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.StyleManager = null;
-            this.metroTextBox2.TabIndex = 18;
-            this.metroTextBox2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.UseStyleColors = false;
+            this.txtPrice.CustomBackground = false;
+            this.txtPrice.CustomForeColor = false;
+            this.txtPrice.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.txtPrice.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.txtPrice.Location = new System.Drawing.Point(137, 159);
+            this.txtPrice.Multiline = false;
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.SelectedText = "";
+            this.txtPrice.Size = new System.Drawing.Size(200, 23);
+            this.txtPrice.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPrice.StyleManager = null;
+            this.txtPrice.TabIndex = 18;
+            this.txtPrice.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPrice.UseStyleColors = false;
             // 
-            // metroTextBox3
+            // txtCommission
             // 
-            this.metroTextBox3.CustomBackground = false;
-            this.metroTextBox3.CustomForeColor = false;
-            this.metroTextBox3.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.metroTextBox3.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.metroTextBox3.Location = new System.Drawing.Point(137, 188);
-            this.metroTextBox3.Multiline = false;
-            this.metroTextBox3.Name = "metroTextBox3";
-            this.metroTextBox3.SelectedText = "";
-            this.metroTextBox3.Size = new System.Drawing.Size(200, 23);
-            this.metroTextBox3.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox3.StyleManager = null;
-            this.metroTextBox3.TabIndex = 19;
-            this.metroTextBox3.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox3.UseStyleColors = false;
+            this.txtCommission.CustomBackground = false;
+            this.txtCommission.CustomForeColor = false;
+            this.txtCommission.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.txtCommission.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.txtCommission.Location = new System.Drawing.Point(137, 188);
+            this.txtCommission.Multiline = false;
+            this.txtCommission.Name = "txtCommission";
+            this.txtCommission.SelectedText = "";
+            this.txtCommission.Size = new System.Drawing.Size(200, 23);
+            this.txtCommission.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtCommission.StyleManager = null;
+            this.txtCommission.TabIndex = 19;
+            this.txtCommission.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtCommission.UseStyleColors = false;
             // 
-            // metroTextBox4
+            // txtDescription
             // 
-            this.metroTextBox4.CustomBackground = false;
-            this.metroTextBox4.CustomForeColor = false;
-            this.metroTextBox4.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.metroTextBox4.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.metroTextBox4.Location = new System.Drawing.Point(137, 217);
-            this.metroTextBox4.Multiline = true;
-            this.metroTextBox4.Name = "metroTextBox4";
-            this.metroTextBox4.SelectedText = "";
-            this.metroTextBox4.Size = new System.Drawing.Size(200, 116);
-            this.metroTextBox4.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox4.StyleManager = null;
-            this.metroTextBox4.TabIndex = 20;
-            this.metroTextBox4.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox4.UseStyleColors = false;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Air",
-            "Attractions",
-            "Car Rental",
-            "Cruise",
-            "Hotel",
-            "Motor Coach",
-            "Railroad",
-            "Tours"});
-            this.checkedListBox1.Location = new System.Drawing.Point(377, 78);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(100, 138);
-            this.checkedListBox1.TabIndex = 21;
+            this.txtDescription.CustomBackground = false;
+            this.txtDescription.CustomForeColor = false;
+            this.txtDescription.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.txtDescription.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.txtDescription.Location = new System.Drawing.Point(137, 217);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.SelectedText = "";
+            this.txtDescription.Size = new System.Drawing.Size(200, 116);
+            this.txtDescription.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtDescription.StyleManager = null;
+            this.txtDescription.TabIndex = 20;
+            this.txtDescription.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtDescription.UseStyleColors = false;
             // 
             // btnConfirm
             // 
             this.btnConfirm.ActiveControl = null;
             this.btnConfirm.CustomBackground = false;
             this.btnConfirm.CustomForeColor = false;
-            this.btnConfirm.Location = new System.Drawing.Point(377, 237);
+            this.btnConfirm.Location = new System.Drawing.Point(357, 352);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.PaintTileCount = true;
-            this.btnConfirm.Size = new System.Drawing.Size(100, 46);
+            this.btnConfirm.Size = new System.Drawing.Size(123, 46);
             this.btnConfirm.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnConfirm.StyleManager = null;
             this.btnConfirm.TabIndex = 22;
@@ -276,10 +266,10 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.CustomBackground = false;
             this.btnCancel.CustomForeColor = false;
-            this.btnCancel.Location = new System.Drawing.Point(377, 289);
+            this.btnCancel.Location = new System.Drawing.Point(497, 352);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.PaintTileCount = true;
-            this.btnCancel.Size = new System.Drawing.Size(100, 44);
+            this.btnCancel.Size = new System.Drawing.Size(136, 46);
             this.btnCancel.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnCancel.StyleManager = null;
             this.btnCancel.TabIndex = 23;
@@ -288,21 +278,93 @@
             this.btnCancel.TileCount = 0;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnImg
+            // 
+            this.btnImg.ActiveControl = null;
+            this.btnImg.CustomBackground = false;
+            this.btnImg.CustomForeColor = false;
+            this.btnImg.Location = new System.Drawing.Point(23, 352);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.PaintTileCount = true;
+            this.btnImg.Size = new System.Drawing.Size(131, 46);
+            this.btnImg.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnImg.StyleManager = null;
+            this.btnImg.TabIndex = 24;
+            this.btnImg.Text = "Add Image";
+            this.btnImg.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.btnImg.TileCount = 0;
+            this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.CustomBackground = false;
+            this.metroTile2.CustomForeColor = false;
+            this.metroTile2.Location = new System.Drawing.Point(174, 352);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.PaintTileCount = true;
+            this.metroTile2.Size = new System.Drawing.Size(152, 46);
+            this.metroTile2.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile2.StyleManager = null;
+            this.metroTile2.TabIndex = 25;
+            this.metroTile2.Text = "Edit Products";
+            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTile2.TileCount = 0;
+            // 
+            // lvProductSuppliers
+            // 
+            this.lvProductSuppliers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Product,
+            this.Supplier});
+            this.lvProductSuppliers.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvProductSuppliers.Location = new System.Drawing.Point(357, 78);
+            this.lvProductSuppliers.Name = "lvProductSuppliers";
+            this.lvProductSuppliers.Size = new System.Drawing.Size(276, 98);
+            this.lvProductSuppliers.TabIndex = 26;
+            this.lvProductSuppliers.UseCompatibleStateImageBehavior = false;
+            this.lvProductSuppliers.View = System.Windows.Forms.View.Details;
+            // 
+            // pbImage
+            // 
+            this.pbImage.Location = new System.Drawing.Point(357, 182);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(276, 151);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImage.TabIndex = 27;
+            this.pbImage.TabStop = false;
+            // 
+            // Product
+            // 
+            this.Product.Text = "Product";
+            this.Product.Width = 135;
+            // 
+            // Supplier
+            // 
+            this.Supplier.Text = "Supplier";
+            this.Supplier.Width = 137;
+            // 
+            // ofdImage
+            // 
+            this.ofdImage.FileName = "openFileDialog1";
+            // 
             // frmAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(536, 356);
+            this.ClientSize = new System.Drawing.Size(656, 421);
+            this.Controls.Add(this.pbImage);
+            this.Controls.Add(this.lvProductSuppliers);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.btnImg);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.metroTextBox4);
-            this.Controls.Add(this.metroTextBox3);
-            this.Controls.Add(this.metroTextBox2);
-            this.Controls.Add(this.metroTextBox1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtCommission);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.dtpEnd);
+            this.Controls.Add(this.dtpStart);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel5);
@@ -314,6 +376,7 @@
             this.Name = "frmAddEdit";
             this.Resizable = false;
             this.Text = "Add Travel Package";
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,15 +390,21 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox3;
-        private MetroFramework.Controls.MetroTextBox metroTextBox4;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private MetroFramework.Controls.MetroTextBox txtName;
+        private MetroFramework.Controls.MetroTextBox txtPrice;
+        private MetroFramework.Controls.MetroTextBox txtCommission;
+        private MetroFramework.Controls.MetroTextBox txtDescription;
         private MetroFramework.Controls.MetroTile btnConfirm;
         private MetroFramework.Controls.MetroTile btnCancel;
+        private MetroFramework.Controls.MetroTile btnImg;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private System.Windows.Forms.ListView lvProductSuppliers;
+        private System.Windows.Forms.ColumnHeader Product;
+        private System.Windows.Forms.ColumnHeader Supplier;
+        private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.OpenFileDialog ofdImage;
 
     }
 }

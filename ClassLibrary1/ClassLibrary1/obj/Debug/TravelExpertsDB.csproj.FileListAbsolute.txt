@@ -5,7 +5,6 @@ C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\ClassLibrary
 C:\Users\702543\Documents\Visual Studio 2013\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.dll
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
-C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\obj\Debug\TravelExpertsDB.csprojResolveAssemblyReference.cache
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWorkshop2\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.dll

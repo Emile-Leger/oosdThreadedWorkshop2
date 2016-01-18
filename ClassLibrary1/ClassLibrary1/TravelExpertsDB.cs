@@ -83,10 +83,11 @@ namespace TravelExpertsDB
                     pkg.PkgName = reader["PkgName"].ToString();
                     pkg.PkgStartDate = (DateTime)reader["PkgStartDate"];
                     pkg.PkgEndDate = (DateTime)reader["PkgEndDate"];
-                    pkg.PkgDesc = reader["PkgDesc"].ToString();
-                    pkg.PkgBasePrice=(decimal)reader["PkgBasePrice"];
+                    pkg.PkgDesc = reader["PkgDesc"].ToString();                    
                     pkg.PkgBasePrice = (decimal)reader["PkgBasePrice"];
-                    pkg.PkgBasePrice = (decimal)reader["PkgAgencyCommission"];
+                    pkg.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+                    if (!reader.IsDBNull(7))
+                        pkg.PkgImg = (byte[])reader["PkgImg"];
                     ListPkg.Add(pkg);
                 }
             }
@@ -158,62 +159,55 @@ namespace TravelExpertsDB
             }
                    
         }
-        /// <summary>
-        /// Add a package object to the Package Table
-        /// </summary>
-        /// <param name="pkg">package</param>
-        /// <returns>PackageId (PK)</returns>
-        //public static int AddPackage(Package pkg)
-        //{
-        //    // Add a Packaget to the Packages Table
-        //    // package is the instance of Package class
-        //    // returns the PackageId of the row inserted or -1 if not added to table
-        //    // throws SqlException and Exception
-        //    SqlConnection connection = MMATravelExperts.GetConnection();
-        //    //String insertStatement = "INSERT INTO Packages (PackageId, PkgName, PkgStartDate, PkgEndDate ,PkgDesc, PkgBasePrice, PkgAgencyCommission) "+
-        //    //    "VALUES (@PackageId, @PkgName, @PkgStartDate, @PkgEndDate, @PkgDesc, @PkgBasePrice, @PkgAgencyCommission)";
-        //    String insertStatement = "INSERT INTO Packages ( PackageId, PkgName) " +
-        //       "VALUES (@PackageId, @PkgName)";
-            
-        //    SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-        //    insertCommand.Parameters.AddWithValue("@PackageId", pkg.PackageId);
-        //    insertCommand.Parameters.AddWithValue("@PkgName", pkg.PkgName);
-        //   // insertCommand.Parameters.AddWithValue("@PkgStartDate", pkg.PkgStartDate);
-        //   // insertCommand.Parameters.AddWithValue("@PkgEndDate", pkg.PkgEndDate);
-        //   // insertCommand.Parameters.AddWithValue("@PkgDesc", pkg.PkgDesc);
-        //   // insertCommand.Parameters.AddWithValue("@PkgBasePrice", pkg.PkgBasePrice);
-        //   // insertCommand.Parameters.AddWithValue("@PkgAgencyCommission", pkg.PkgAgencyCommission);
-        //    try
-        //    {
-        //        connection.Open();
-        //        int numRows = insertCommand.ExecuteNonQuery();
-        //        if (numRows > 0)
-        //        {
-        //            int prodIDcheck=0;
-        //            string selectStatement = "SELECT IDENT_CURRENT('PackageId') FROM Packages";
-        //            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-        //            int? prodId = (int)selectCommand.ExecuteScalar();
-        //            if (prodId != null) prodIDcheck=(int)prodId;
-        //            return prodIDcheck;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
-        //    catch (SqlException SqlEx)
-        //    {
-        //        throw SqlEx;
-        //    }
-        //    //catch (Exception Ex)
-        //    //{
-        //        //throw Ex;
-        //    //}
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-        //}
+         //<summary>
+         //Add a package object to the Package Table
+         //</summary>
+         //<param name="pkg">package</param>
+         //<returns>PackageId (PK)</returns>
+        public static int AddPackage(Package pkg)
+        {
+            // Add a Package to the Packages Table
+            // package is the instance of Package class
+            // returns the PackageId of the row inserted or -1 if not added to table
+            // throws SqlException and Exception
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            String insertStatement = "INSERT INTO Packages (PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission, PkgImg) " +
+                "VALUES (@PkgName, @PkgStartDate, @PkgEndDate, @PkgDesc, @PkgBasePrice, @PkgAgencyCommission, @PkgImg)";                        
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);            
+            insertCommand.Parameters.AddWithValue("@PkgName", pkg.PkgName);
+            insertCommand.Parameters.AddWithValue("@PkgStartDate", pkg.PkgStartDate);
+            insertCommand.Parameters.AddWithValue("@PkgEndDate", pkg.PkgEndDate);
+            insertCommand.Parameters.AddWithValue("@PkgDesc", pkg.PkgDesc);
+            insertCommand.Parameters.AddWithValue("@PkgBasePrice", pkg.PkgBasePrice);
+            insertCommand.Parameters.AddWithValue("@PkgAgencyCommission", pkg.PkgAgencyCommission);
+            insertCommand.Parameters.AddWithValue("@PkgImg", pkg.PkgImg);
+            try
+            {
+                connection.Open();
+                int numRows = insertCommand.ExecuteNonQuery();
+                if (numRows > 0)
+                {
+                    int prodIDcheck=0;
+                    string selectStatement = "SELECT IDENT_CURRENT('PackageId') FROM Packages";
+                    SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                    int prodId = (int)selectCommand.ExecuteScalar();
+                    if (prodId != null) prodIDcheck = (int)prodId;
+                    return prodIDcheck;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch (SqlException SqlEx)
+            {
+                throw SqlEx;
+            }            
+            finally
+            {
+                connection.Close();
+            }
+        }
 
         /// <summary>
         /// Delete a package from Packages Table
@@ -268,69 +262,70 @@ namespace TravelExpertsDB
                 throw Ex;
             }
         }
-        /// <summary>
-        /// Updates a package in the Packages Table
-        /// </summary>
-        /// <param name="oldPkg">old package</param>
-        /// <param name="newPkg">new package</param>
-        /// <returns></returns>
-        //public static bool UpdatePackage(Package oldPkg, Package newPkg)
-        //{
-        //    // Updates the Packages Table 
-        //    // parameter oldPkg ... the old row as an instance of Package class
-        //    // parameter newPkg ... the new row as an instance of Package class
-        //    // returns true row updated, false row not updated
-        //    // throws SqlException and Exception
-        //    SqlConnection connection = MMATravelExperts.GetConnection();
-        //    string updateStatement="UPDATE Packages SET PackageId=@newPackageId, PkgName=@newPkgName, "+
-        //            "PkgStartDate=@newPkgStartDate, PkgEndDate=@newPkgEndDate, "+
-        //            "PkgDesc=@newPkgDesc, PkgBasePrice=@newPkgBasePrice, PkgAgencyCommision=@newPkgAgencyCommission "+
-        //            "WHERE PackageId=@oldPackageId and PkgName=@oldPkgName and PkgStartDate=@oldPkgStartDate and "+
-        //            "PkgEndDate=@oldPkgEndDate and PkgDesc=@oldPkgDesc and PkgBasePrice=@oldPkgBasePrice and "+
-        //            "PkgAgencyCommision=@oldPkgAgencyCommission";
-        //    SqlCommand updateCommand = new SqlCommand(updateStatement,connection);
-        //    // new package listing
-        //    updateCommand.Parameters.AddWithValue("@newPackageId",newPkg.PackageId);
-        //    updateCommand.Parameters.AddWithValue("@newPkgName",newPkg.PkgName);
-        //    updateCommand.Parameters.AddWithValue("@newPkgStartDate",newPkg.PkgStartDate);
-        //    updateCommand.Parameters.AddWithValue("@newPkgEndDate",newPkg.PkgEndDate);
-        //    updateCommand.Parameters.AddWithValue("@newPkgDesc",newPkg.PkgDesc);
-        //    updateCommand.Parameters.AddWithValue("@newPkgBasePrice",newPkg.PkgBasePrice);
-        //    updateCommand.Parameters.AddWithValue("@newPkgAgencyCommission",newPkg.PkgAgencyCommission);
-        //    // old package listing
-        //    updateCommand.Parameters.AddWithValue("@oldPackageId",oldPkg.PackageId);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgName",oldPkg.PkgName);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgStartDate",oldPkg.PkgStartDate);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgEndDate",oldPkg.PkgEndDate);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgDesc",oldPkg.PkgDesc);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgBasePrice",oldPkg.PkgBasePrice);
-        //    updateCommand.Parameters.AddWithValue("@oldPkgAgencyCommission",oldPkg.PkgAgencyCommission);
-        //    try
-        //    {
-        //        connection.Open();
-        //        int count = updateCommand.ExecuteNonQuery();
-        //        if (count>0)
-        //        {
-        //            return true; // rows updated
-        //        }
-        //        else
-        //        {
-        //            return false; //rows not updated
-        //        }
-        //    }
-        //    catch (SqlException SqlEx)
-        //    {
-        //        throw SqlEx;
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        throw Ex;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-        //}
+         //<summary>
+         //Updates a package in the Packages Table
+         //</summary>
+         //<param name="oldPkg">old package</param>
+         //<param name="newPkg">new package</param>
+         //<returns></returns>
+        public static bool UpdatePackage(Package oldPkg, Package newPkg)
+        {
+            // Updates the Packages Table 
+            // parameter oldPkg ... the old row as an instance of Package class
+            // parameter newPkg ... the new row as an instance of Package class
+            // returns true row updated, false row not updated
+            // throws SqlException and Exception
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            string updateStatement="UPDATE Packages SET PkgName=@newPkgName, "+
+                                   "PkgStartDate=@newPkgStartDate, PkgEndDate=@newPkgEndDate, "+
+                                   "PkgDesc=@newPkgDesc, PkgBasePrice=@newPkgBasePrice, PkgAgencyCommission=@newPkgAgencyCommission, PkgImg=@newPkgImg " +
+                                   "WHERE PackageId=@oldPackageId and PkgName=@oldPkgName and PkgStartDate=@oldPkgStartDate and "+
+                                   "PkgEndDate=@oldPkgEndDate and PkgDesc=@oldPkgDesc and PkgBasePrice=@oldPkgBasePrice and "+
+                                   "PkgAgencyCommission=@oldPkgAgencyCommission";
+            SqlCommand updateCommand = new SqlCommand(updateStatement,connection);
+            // new package listing
+            updateCommand.Parameters.AddWithValue("@newPackageId",newPkg.PackageId);
+            updateCommand.Parameters.AddWithValue("@newPkgName",newPkg.PkgName);
+            updateCommand.Parameters.AddWithValue("@newPkgStartDate",newPkg.PkgStartDate);
+            updateCommand.Parameters.AddWithValue("@newPkgEndDate",newPkg.PkgEndDate);
+            updateCommand.Parameters.AddWithValue("@newPkgDesc",newPkg.PkgDesc);
+            updateCommand.Parameters.AddWithValue("@newPkgBasePrice",newPkg.PkgBasePrice);
+            updateCommand.Parameters.AddWithValue("@newPkgAgencyCommission",newPkg.PkgAgencyCommission);
+            updateCommand.Parameters.AddWithValue("@newPkgImg", newPkg.PkgImg);
+            // old package listing
+            updateCommand.Parameters.AddWithValue("@oldPackageId",oldPkg.PackageId);
+            updateCommand.Parameters.AddWithValue("@oldPkgName",oldPkg.PkgName);
+            updateCommand.Parameters.AddWithValue("@oldPkgStartDate",oldPkg.PkgStartDate);
+            updateCommand.Parameters.AddWithValue("@oldPkgEndDate",oldPkg.PkgEndDate);
+            updateCommand.Parameters.AddWithValue("@oldPkgDesc",oldPkg.PkgDesc);
+            updateCommand.Parameters.AddWithValue("@oldPkgBasePrice",oldPkg.PkgBasePrice);
+            updateCommand.Parameters.AddWithValue("@oldPkgAgencyCommission",oldPkg.PkgAgencyCommission);
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count>0)
+                {
+                    return true; // rows updated
+                }
+                else
+                {
+                    return false; //rows not updated
+                }
+            }
+            catch (SqlException SqlEx)
+            {
+                throw SqlEx;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
         //******************** Packages_Products_Suppliers_ Table ***************
 
@@ -704,10 +699,7 @@ namespace TravelExpertsDB
 
         /// <summary>
         /// query for the Product and supplier names on a given Package ID
-<<<<<<< HEAD
         /// Emile,  debugged and working
-=======
->>>>>>> master
         /// </summary>
         /// <param name="packageId">the Package id</param>
         /// <returns> list of productsupplier object containing the names of the products and suppliers</returns>

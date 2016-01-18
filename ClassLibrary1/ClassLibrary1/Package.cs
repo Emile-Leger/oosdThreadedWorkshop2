@@ -23,5 +23,9 @@ namespace TravelExpertsDB
             return PkgName;
         }
 
+        public void fillSuppliers()
+        {
+            productSuppliers = TravelExpertsDB.getProductSuppliers(PackageId);
+        }        
     }
 }
