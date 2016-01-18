@@ -50,6 +50,14 @@ namespace TravelExpertsDesktopApp
         {
             frmAddEdit myForm = new frmAddEdit(ADD_MESSAGE);            
             myForm.ShowDialog();
+            if (myForm.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Successfully added" + myForm.activePackage);
+            }
+            else if (myForm.DialogResult == DialogResult.Abort)
+            {
+                MessageBox.Show("Failed to add" + myForm.activePackage +"please try again");
+            }
         }
         //show the add/edit dialogue, in edit mode, ie imports the active package
         private void btnEdit_Click(object sender, EventArgs e)
@@ -62,7 +70,13 @@ namespace TravelExpertsDesktopApp
                 {
                     updatePackages();
                     ClearControls();
+                    MessageBox.Show("Successfully updated " + myForm.activePackage);
                 }
+                else if (myForm.DialogResult == DialogResult.Abort)
+                {
+                    MessageBox.Show("Failed to edit " + myForm.activePackage);
+                }
+
             }
             else
             {

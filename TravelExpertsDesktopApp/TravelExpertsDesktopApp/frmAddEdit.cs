@@ -15,7 +15,7 @@ namespace TravelExpertsDesktopApp
     public partial class frmAddEdit : MetroFramework.Forms.MetroForm
     {
         private string message;
-        private Package activePackage;
+        public Package activePackage { get; set; }
 
 
         public frmAddEdit()
@@ -63,7 +63,7 @@ namespace TravelExpertsDesktopApp
         {
             string newBasePrice = txtPrice.Text.Replace(",","").Replace("$","");
             string newCommission = txtCommission.Text.Replace(",", "").Replace("$", "");
-                 
+            //create a new package from the form controls     
             Package newPackage = new Package();
             newPackage.PkgName = txtName.Text;
             newPackage.PkgStartDate = dtpStart.Value;
@@ -74,17 +74,30 @@ namespace TravelExpertsDesktopApp
             newPackage.PkgImg = activePackage.PkgImg;
             try
             {
-                if (this.message == "Enter Package Details")
+                if (this.message == "Enter Package Details")//the user is in the add form
                 {
-                    TravelExpertsDB.TravelExpertsDB.AddPackage(newPackage);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (TravelExpertsDB.TravelExpertsDB.AddPackage(newPackage) > 0)
+                    {
+                        this.DialogResult = DialogResult.OK;                        
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Abort;//add failed, close the form and display a message
+                    }                    
                 }
                 else
                 {
-                    TravelExpertsDB.TravelExpertsDB.UpdatePackage(activePackage, newPackage);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+
+                    if (TravelExpertsDB.TravelExpertsDB.UpdatePackage(activePackage, newPackage))
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Abort;//update failed, close the form and display message
+                    }
                 }
             }
             catch (Exception ex)
@@ -106,20 +119,27 @@ namespace TravelExpertsDesktopApp
             ofdImage.InitialDirectory = "C:\\Users\\433080\\Desktop\\images";
             ofdImage.Filter = "Image files (*.jpg)|*.jpg";
             ofdImage.FileName = "";
-            ofdImage.ShowDialog();            
-            using (FileStream fs = new FileStream(ofdImage.FileName, FileMode.Open, FileAccess.Read))
+            ofdImage.ShowDialog();
+            if (ofdImage.FileName != "")
             {
-                imageData = new byte[fs.Length];
-                activePackage.PkgImg = imageData;
-                fs.Read(imageData, 0, (int)fs.Length);
+                using (FileStream fs = new FileStream(ofdImage.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    imageData = new byte[fs.Length];
+                    activePackage.PkgImg = imageData;
+                    fs.Read(imageData, 0, (int)fs.Length);
+                }
+                using (MemoryStream ms = new MemoryStream(imageData))
+                {
+                    pkgImage = Image.FromStream(ms);
+                    //pkgImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+
+                pbImage.Image = pkgImage;
             }
-            using (MemoryStream ms = new MemoryStream(imageData))
+            else
             {
-                pkgImage = Image.FromStream(ms);
-                //pkgImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                pbImage = null;
             }
-           
-            pbImage.Image = pkgImage;
         }
                
     }
