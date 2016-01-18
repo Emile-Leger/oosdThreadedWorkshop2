@@ -59,6 +59,94 @@ namespace TravelExpertsDB
             }
             return ListProducts;  // return the list of products
         }
+        public static List<Supplier> GetProductsFromSupplierId(int ProductId)
+        // Get the List of products from Procts Table for a given SupplierId from Table Suppliers
+        // SupplierId is an int and the PK for Table Package
+        // returns List type Product, null if no product or exception
+        // throws SqlException and Exception
+        // checked Jan 17/16 DS
+        {
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            List<Supplier> ListSuppliers = new List<Supplier>();
+            string selectStatement = "SELECT p.ProductID, p.ProdName FROM Products p, " +
+                    "Products_Suppliers ps, Suppliers s " +
+                    "WHERE p.ProductId=ps.ProductId and ps.SupplierId=s.SupplierId and " +
+                    "p.ProductId=@ProductId";
+            //SELECT s.SupplierId, s.SupName FROM [dbo].[Suppliers] s, [dbo].[Products_Suppliers] ps, [dbo].[Products] p
+            //WHERE s.SupplierId=ps.SupplierId and p.ProductId=ps.ProductId and p.ProductId=2
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ProductId", ProductId);
+            try
+            {
+                connection.Open();
+                SqlDataReader pkgReader = selectCommand.ExecuteReader();
+                while (pkgReader.Read())
+                {
+                    Supplier supp = new Supplier();
+                    supp.SupName = Convert.ToString(pkgReader["SupName"]);
+                    supp.SupplierID = (int)pkgReader["SupNameId"];
+                    ListSuppliers.Add(supp);
+                }
+            }
+            catch (SqlException SqlEx)
+            {
+                throw SqlEx;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ListSuppliers;  // return the list of products
+        }
+
+        public static List<Supplier> GetSuppliersFromProductId(int ProductId)
+        // Get the List of suppliers from Suppliers Table for a given ProductId from Table Products
+        // SupplierId is an int and the PK for Table Package
+        // returns List type Product, null if no product or exception
+        // throws SqlException and Exception
+        // checked Jan 17/16 DS
+        {
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            List<Supplier> ListSupplier = new List<Supplier>();
+            string selectStatement = "SELECT s.SupplierId, s.SupName FROM Products p, " +
+                    "Products_Suppliers ps, Suppliers s " +
+                    "WHERE p.ProductId=ps.ProductId and ps.SupplierId=s.SupplierId and " +
+                    "p.ProductId=@ProductId";
+            //SELECT p.ProductId, p.ProdName, s.SupName 
+            //    FROM [dbo].[Suppliers] s, [dbo].[Products_Suppliers] ps, [dbo].[Products] p
+            //    WHERE s.SupplierId=ps.SupplierId and p.ProductId=ps.ProductId and s.SupplierId=1713
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ProductId", ProductId);
+            try
+            {
+                connection.Open();
+                SqlDataReader pkgReader = selectCommand.ExecuteReader();
+                while (pkgReader.Read())
+                {
+                    Supplier supp = new Supplier();
+                    supp.SupName = Convert.ToString(pkgReader["SupName"]);
+                    supp.SupplierID = (int)pkgReader["SupplierId"];
+                    ListSupplier.Add(supp);
+                }
+            }
+            catch (SqlException SqlEx)
+            {
+                throw SqlEx;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ListSupplier;  // return the list of suppliers
+        }
 
         ////******************** Packages Table ***************
         public static List<Package> GetAllPackages()
@@ -88,6 +176,7 @@ namespace TravelExpertsDB
                     pkg.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
                     if (!reader.IsDBNull(7))
                         pkg.PkgImg = (byte[])reader["PkgImg"];
+
                     ListPkg.Add(pkg);
                 }
             }
