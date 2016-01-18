@@ -27,10 +27,10 @@ namespace TravelExpertsDB
                     "Packages_Products_Suppliers pps, Products_Suppliers ps, Products p " +
                     "WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and " +
                     "p.ProductId=ps.ProductId and pack.PackageId=@PackageId";
-//SELECT p.ProductID, p.ProdName FROM Packages pack, 
-//       Packages_Products_Suppliers pps, Products_Suppliers ps, Products p 
-//       WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and 
-//       p.ProductId=ps.ProductId and pack.PackageId=1
+        //SELECT p.ProductID, p.ProdName FROM Packages pack, 
+        //       Packages_Products_Suppliers pps, Products_Suppliers ps, Products p 
+        //       WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and 
+        //       p.ProductId=ps.ProductId and pack.PackageId=1
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PackageId", PackageId);
             try
@@ -59,7 +59,7 @@ namespace TravelExpertsDB
             }
             return ListProducts;  // return the list of products
         }
-        public static List<Supplier> GetProductsFromSupplierId(int ProductId)
+        public static List<Supplier> GetSuppliersFromProductId(int ProductId)
         // Get the List of products from Procts Table for a given SupplierId from Table Suppliers
         // SupplierId is an int and the PK for Table Package
         // returns List type Product, null if no product or exception
@@ -79,12 +79,12 @@ namespace TravelExpertsDB
             try
             {
                 connection.Open();
-                SqlDataReader pkgReader = selectCommand.ExecuteReader();
-                while (pkgReader.Read())
+                SqlDataReader suppReader = selectCommand.ExecuteReader();
+                while (suppReader.Read())
                 {
                     Supplier supp = new Supplier();
-                    supp.SupName = Convert.ToString(pkgReader["SupName"]);
-                    supp.SupplierID = (int)pkgReader["SupNameId"];
+                    supp.SupName = Convert.ToString(suppReader["SupName"]);
+                    supp.SupplierID = (int)suppReader["SupplierId"];
                     ListSuppliers.Add(supp);
                 }
             }
@@ -103,34 +103,34 @@ namespace TravelExpertsDB
             return ListSuppliers;  // return the list of products
         }
 
-        public static List<Supplier> GetSuppliersFromProductId(int ProductId)
-        // Get the List of suppliers from Suppliers Table for a given ProductId from Table Products
-        // SupplierId is an int and the PK for Table Package
+        public static List<Product> GetProductsFromSupplierId(int SupplierId)
+        // Get the List of products from Products Table for a given SupplierId from Table Suppliers
+        // SupplierId is an int and the PK for Table Supplier
         // returns List type Product, null if no product or exception
         // throws SqlException and Exception
         // checked Jan 17/16 DS
         {
             SqlConnection connection = MMATravelExperts.GetConnection();
-            List<Supplier> ListSupplier = new List<Supplier>();
+            List<Product> ListProducts = new List<Product>();
             string selectStatement = "SELECT s.SupplierId, s.SupName FROM Products p, " +
                     "Products_Suppliers ps, Suppliers s " +
                     "WHERE p.ProductId=ps.ProductId and ps.SupplierId=s.SupplierId and " +
-                    "p.ProductId=@ProductId";
+                    "s.SupplierId=@SupplierId";
             //SELECT p.ProductId, p.ProdName, s.SupName 
             //    FROM [dbo].[Suppliers] s, [dbo].[Products_Suppliers] ps, [dbo].[Products] p
             //    WHERE s.SupplierId=ps.SupplierId and p.ProductId=ps.ProductId and s.SupplierId=1713
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@ProductId", ProductId);
+            selectCommand.Parameters.AddWithValue("@SupplierId", SupplierId);
             try
             {
                 connection.Open();
                 SqlDataReader pkgReader = selectCommand.ExecuteReader();
                 while (pkgReader.Read())
                 {
-                    Supplier supp = new Supplier();
-                    supp.SupName = Convert.ToString(pkgReader["SupName"]);
-                    supp.SupplierID = (int)pkgReader["SupplierId"];
-                    ListSupplier.Add(supp);
+                    Product prod = new Product();
+                    prod.ProdName = Convert.ToString(pkgReader["ProdName"]);
+                    prod.ProductId = (int)pkgReader["ProductId"];
+                    ListProducts.Add(prod);
                 }
             }
             catch (SqlException SqlEx)
@@ -145,7 +145,7 @@ namespace TravelExpertsDB
             {
                 connection.Close();
             }
-            return ListSupplier;  // return the list of suppliers
+            return ListProducts;  // return the list of suppliers
         }
 
         ////******************** Packages Table ***************

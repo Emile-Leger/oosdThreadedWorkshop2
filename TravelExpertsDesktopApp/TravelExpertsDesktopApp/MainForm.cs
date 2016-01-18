@@ -23,6 +23,7 @@ namespace TravelExpertsDesktopApp
         const string EDIT_MESSAGE = "Edit Package Details";
         public Package activePackage;
         public List<Package> packages;
+        public List<Product> products = TravelExpertsDB.TravelExpertsDB.GetProductsFromSupplierId(1);
 
         public MainForm()
         {
