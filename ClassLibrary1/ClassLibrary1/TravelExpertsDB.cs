@@ -828,6 +828,44 @@ namespace TravelExpertsDB
             {
                 connection.Close();
             }
-        }      
+        }
+        /// <summary>
+        /// Retrieves each Product Supplier in a list
+        /// </summary>
+        /// <returns></returns>
+        public static List<Product_Supplier> getAllProductSuppliers()
+        {
+
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            string selectStatement = "select ProdName, SupName, Products.ProductId, Suppliers.SupplierId, ProductSupplierId from Products_Suppliers, Products, Suppliers ";
+                                     
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);            
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                List<Product_Supplier> productSuppliersList = new List<Product_Supplier>();
+                while (reader.Read())
+                {
+                    Product_Supplier myPS = new Product_Supplier();
+                    myPS.ProductSupplierId = (int)reader["ProductSupplierId"];
+                    myPS.ProductName = reader["ProdName"].ToString();
+                    myPS.ProductId = (int)reader["ProductID"];
+                    myPS.SupName = reader["SupName"].ToString();
+                    myPS.SupplierId = (int)reader["SupplierID"];
+                    productSuppliersList.Add(myPS);
+                }
+                return productSuppliersList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

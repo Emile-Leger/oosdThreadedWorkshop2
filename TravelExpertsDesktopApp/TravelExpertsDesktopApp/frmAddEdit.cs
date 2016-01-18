@@ -22,7 +22,7 @@ namespace TravelExpertsDesktopApp
         {
             InitializeComponent();
         }
-        //The form is in edit mode
+        //The form constructor for edit mode
         public frmAddEdit(string message, Package package)
         {            
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace TravelExpertsDesktopApp
             displayPackage();
             btnConfirm.Text = "Edit";
         }
-        //the form is in add mode
+        //the form constructor for add mode
         public frmAddEdit(string message)
         {
             InitializeComponent();
@@ -61,6 +61,7 @@ namespace TravelExpertsDesktopApp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            //handle the ToString currency format
             string newBasePrice = txtPrice.Text.Replace(",","").Replace("$","");
             string newCommission = txtCommission.Text.Replace(",", "").Replace("$", "");
             //create a new package from the form controls     

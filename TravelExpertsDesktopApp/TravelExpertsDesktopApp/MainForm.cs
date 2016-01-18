@@ -107,7 +107,7 @@ namespace TravelExpertsDesktopApp
             pbPkgImg.Image = null;
             cbPackages.Focus();
             txtSearch.Focus();
-            lbProductSuppliers.Items.Clear();             
+            lvProductSuppliers.Items.Clear();             
         }
         //Displays all the data from the active package
         private void DisplayPackage()
@@ -122,8 +122,9 @@ namespace TravelExpertsDesktopApp
                 pbPkgImg.Image = MainForm.arrayToImage(activePackage.PkgImg);
             foreach (Product_Supplier ps in activePackage.productSuppliers)
             {
-                lbProductSuppliers.Items.Add(ps); 
-            }            
+                ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
+                lvProductSuppliers.Items.Add(lvi);
+            }           
         }
        
         private void btnExit_Click(object sender, EventArgs e)

@@ -41,7 +41,6 @@
             this.lblEnd = new MetroFramework.Controls.MetroLabel();
             this.lblStart = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.lbProductSuppliers = new System.Windows.Forms.ListBox();
             this.pbPkgImg = new System.Windows.Forms.PictureBox();
             this.btnExit = new MetroFramework.Controls.MetroTile();
             this.btnDelete = new MetroFramework.Controls.MetroTile();
@@ -53,6 +52,10 @@
             this.lblPkgName = new MetroFramework.Controls.MetroLabel();
             this.cbPackages = new MetroFramework.Controls.MetroComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lvProductSuppliers = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPkgImg)).BeginInit();
@@ -61,13 +64,14 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.CustomBackground = false;
             this.metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Medium;
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(1186, 405);
+            this.metroTabControl1.Size = new System.Drawing.Size(1127, 405);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabControl1.StyleManager = this.msmStyle;
             this.metroTabControl1.TabIndex = 0;
@@ -77,6 +81,7 @@
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.lvProductSuppliers);
             this.metroTabPage1.Controls.Add(this.lblDescription);
             this.metroTabPage1.Controls.Add(this.metroLabel2);
             this.metroTabPage1.Controls.Add(this.metroLabel9);
@@ -88,7 +93,6 @@
             this.metroTabPage1.Controls.Add(this.lblEnd);
             this.metroTabPage1.Controls.Add(this.lblStart);
             this.metroTabPage1.Controls.Add(this.metroLabel1);
-            this.metroTabPage1.Controls.Add(this.lbProductSuppliers);
             this.metroTabPage1.Controls.Add(this.pbPkgImg);
             this.metroTabPage1.Controls.Add(this.btnExit);
             this.metroTabPage1.Controls.Add(this.btnDelete);
@@ -106,7 +110,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1178, 366);
+            this.metroTabPage1.Size = new System.Drawing.Size(1119, 366);
             this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage1.StyleManager = this.msmStyle;
             this.metroTabPage1.TabIndex = 0;
@@ -129,7 +133,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(83, 19);
             this.lblDescription.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblDescription.StyleManager = null;
+            this.lblDescription.StyleManager = this.msmStyle;
             this.lblDescription.TabIndex = 70;
             this.lblDescription.Text = "metroLabel5";
             this.lblDescription.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -147,7 +151,7 @@
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(77, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel2.StyleManager = null;
+            this.metroLabel2.StyleManager = this.msmStyle;
             this.metroLabel2.TabIndex = 69;
             this.metroLabel2.Text = "Description:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -165,7 +169,7 @@
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(84, 19);
             this.metroLabel9.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel9.StyleManager = null;
+            this.metroLabel9.StyleManager = this.msmStyle;
             this.metroLabel9.TabIndex = 68;
             this.metroLabel9.Text = "Commission:";
             this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -183,7 +187,7 @@
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(41, 19);
             this.metroLabel8.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel8.StyleManager = null;
+            this.metroLabel8.StyleManager = this.msmStyle;
             this.metroLabel8.TabIndex = 67;
             this.metroLabel8.Text = "Price:";
             this.metroLabel8.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -201,7 +205,7 @@
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(65, 19);
             this.metroLabel7.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel7.StyleManager = null;
+            this.metroLabel7.StyleManager = this.msmStyle;
             this.metroLabel7.TabIndex = 66;
             this.metroLabel7.Text = "End Date:";
             this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -219,7 +223,7 @@
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(71, 19);
             this.metroLabel6.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel6.StyleManager = null;
+            this.metroLabel6.StyleManager = this.msmStyle;
             this.metroLabel6.TabIndex = 65;
             this.metroLabel6.Text = "Start Date:";
             this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -237,7 +241,7 @@
             this.lblCommission.Name = "lblCommission";
             this.lblCommission.Size = new System.Drawing.Size(83, 19);
             this.lblCommission.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblCommission.StyleManager = null;
+            this.lblCommission.StyleManager = this.msmStyle;
             this.lblCommission.TabIndex = 64;
             this.lblCommission.Text = "metroLabel5";
             this.lblCommission.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -255,7 +259,7 @@
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(83, 19);
             this.lblPrice.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblPrice.StyleManager = null;
+            this.lblPrice.StyleManager = this.msmStyle;
             this.lblPrice.TabIndex = 63;
             this.lblPrice.Text = "metroLabel4";
             this.lblPrice.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -273,7 +277,7 @@
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(83, 19);
             this.lblEnd.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblEnd.StyleManager = null;
+            this.lblEnd.StyleManager = this.msmStyle;
             this.lblEnd.TabIndex = 62;
             this.lblEnd.Text = "metroLabel3";
             this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -291,7 +295,7 @@
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(83, 19);
             this.lblStart.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblStart.StyleManager = null;
+            this.lblStart.StyleManager = this.msmStyle;
             this.lblStart.TabIndex = 61;
             this.lblStart.Text = "metroLabel2";
             this.lblStart.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -309,25 +313,15 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(115, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
+            this.metroLabel1.StyleManager = this.msmStyle;
             this.metroLabel1.TabIndex = 60;
             this.metroLabel1.Text = "Product Suppliers:";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroLabel1.UseStyleColors = false;
             // 
-            // lbProductSuppliers
-            // 
-            this.lbProductSuppliers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProductSuppliers.FormattingEnabled = true;
-            this.lbProductSuppliers.ItemHeight = 15;
-            this.lbProductSuppliers.Location = new System.Drawing.Point(447, 197);
-            this.lbProductSuppliers.Name = "lbProductSuppliers";
-            this.lbProductSuppliers.Size = new System.Drawing.Size(272, 109);
-            this.lbProductSuppliers.TabIndex = 59;
-            // 
             // pbPkgImg
             // 
-            this.pbPkgImg.Location = new System.Drawing.Point(794, 68);
+            this.pbPkgImg.Location = new System.Drawing.Point(734, 68);
             this.pbPkgImg.Name = "pbPkgImg";
             this.pbPkgImg.Size = new System.Drawing.Size(346, 252);
             this.pbPkgImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -344,7 +338,7 @@
             this.btnExit.PaintTileCount = true;
             this.btnExit.Size = new System.Drawing.Size(118, 66);
             this.btnExit.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnExit.StyleManager = null;
+            this.btnExit.StyleManager = this.msmStyle;
             this.btnExit.TabIndex = 57;
             this.btnExit.Text = "Exit Program";
             this.btnExit.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -361,7 +355,7 @@
             this.btnDelete.PaintTileCount = true;
             this.btnDelete.Size = new System.Drawing.Size(118, 66);
             this.btnDelete.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnDelete.StyleManager = null;
+            this.btnDelete.StyleManager = this.msmStyle;
             this.btnDelete.TabIndex = 56;
             this.btnDelete.Text = "Delete Package";
             this.btnDelete.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -377,7 +371,7 @@
             this.btnAdd.PaintTileCount = true;
             this.btnAdd.Size = new System.Drawing.Size(118, 66);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnAdd.StyleManager = null;
+            this.btnAdd.StyleManager = this.msmStyle;
             this.btnAdd.TabIndex = 55;
             this.btnAdd.Text = "Add new Package";
             this.btnAdd.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -394,7 +388,7 @@
             this.btnEdit.PaintTileCount = true;
             this.btnEdit.Size = new System.Drawing.Size(118, 66);
             this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnEdit.StyleManager = null;
+            this.btnEdit.StyleManager = this.msmStyle;
             this.btnEdit.TabIndex = 54;
             this.btnEdit.Text = "Edit Package";
             this.btnEdit.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -479,11 +473,53 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Select a Travel Package";
             // 
+            // lvProductSuppliers
+            // 
+            this.lvProductSuppliers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvProductSuppliers.Location = new System.Drawing.Point(447, 197);
+            this.lvProductSuppliers.Name = "lvProductSuppliers";
+            this.lvProductSuppliers.Size = new System.Drawing.Size(220, 123);
+            this.lvProductSuppliers.TabIndex = 71;
+            this.lvProductSuppliers.UseCompatibleStateImageBehavior = false;
+            this.lvProductSuppliers.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Product ";
+            this.columnHeader1.Width = 95;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Supplier";
+            this.columnHeader2.Width = 121;
+            // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.CustomBackground = false;
+            this.metroTabPage2.HorizontalScrollbar = false;
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(1178, 366);
+            this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTabPage2.StyleManager = this.msmStyle;
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Product Supplier Manager";
+            this.metroTabPage2.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTabPage2.VerticalScrollbar = false;
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1253, 492);
+            this.ClientSize = new System.Drawing.Size(1175, 493);
             this.Controls.Add(this.metroTabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
@@ -524,10 +560,13 @@
         private MetroFramework.Controls.MetroLabel lblEnd;
         private MetroFramework.Controls.MetroLabel lblStart;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.ListBox lbProductSuppliers;
         private System.Windows.Forms.PictureBox pbPkgImg;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel lblDescription;
+        private System.Windows.Forms.ListView lvProductSuppliers;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
 
 
 
