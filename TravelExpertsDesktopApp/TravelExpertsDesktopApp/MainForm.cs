@@ -140,5 +140,11 @@ namespace TravelExpertsDesktopApp
                 return Image.FromStream(ms);
             }
         }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            editProductSuppliers edit = new editProductSuppliers(activePackage);
+            edit.ShowDialog();
+        }
     }
 }
