@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="editProductSuppliers.cs">
+    <Compile Include="frmEditProductSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="editProductSuppliers.Designer.cs">
-      <DependentUpon>editProductSuppliers.cs</DependentUpon>
+    <Compile Include="frmEditProductSuppliers.Designer.cs">
+      <DependentUpon>frmEditProductSuppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddEdit.cs">
       <SubType>Form</SubType>
@@ -70,8 +70,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="editProductSuppliers.resx">
-      <DependentUpon>editProductSuppliers.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditProductSuppliers.resx">
+      <DependentUpon>frmEditProductSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEdit.resx">
       <DependentUpon>frmAddEdit.cs</DependentUpon>

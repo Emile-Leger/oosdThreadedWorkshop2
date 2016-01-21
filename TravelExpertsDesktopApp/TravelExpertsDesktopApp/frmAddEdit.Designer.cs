@@ -43,11 +43,11 @@
             this.btnConfirm = new MetroFramework.Controls.MetroTile();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.btnImg = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.btnEditProducts = new MetroFramework.Controls.MetroTile();
             this.lvProductSuppliers = new System.Windows.Forms.ListView();
-            this.pbImage = new System.Windows.Forms.PictureBox();
             this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Supplier = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pbImage = new System.Windows.Forms.PictureBox();
             this.ofdImage = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
@@ -295,24 +295,26 @@
             this.btnImg.TileCount = 0;
             this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
             // 
-            // metroTile2
+            // btnEditProducts
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.CustomBackground = false;
-            this.metroTile2.CustomForeColor = false;
-            this.metroTile2.Location = new System.Drawing.Point(174, 352);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.PaintTileCount = true;
-            this.metroTile2.Size = new System.Drawing.Size(152, 46);
-            this.metroTile2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTile2.StyleManager = null;
-            this.metroTile2.TabIndex = 25;
-            this.metroTile2.Text = "Edit Products";
-            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTile2.TileCount = 0;
+            this.btnEditProducts.ActiveControl = null;
+            this.btnEditProducts.CustomBackground = false;
+            this.btnEditProducts.CustomForeColor = false;
+            this.btnEditProducts.Location = new System.Drawing.Point(174, 352);
+            this.btnEditProducts.Name = "btnEditProducts";
+            this.btnEditProducts.PaintTileCount = true;
+            this.btnEditProducts.Size = new System.Drawing.Size(152, 46);
+            this.btnEditProducts.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnEditProducts.StyleManager = null;
+            this.btnEditProducts.TabIndex = 25;
+            this.btnEditProducts.Text = "Edit Products";
+            this.btnEditProducts.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.btnEditProducts.TileCount = 0;
+            this.btnEditProducts.Click += new System.EventHandler(this.btnEditProducts_Click);
             // 
             // lvProductSuppliers
             // 
+            this.lvProductSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvProductSuppliers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Product,
             this.Supplier});
@@ -324,15 +326,6 @@
             this.lvProductSuppliers.UseCompatibleStateImageBehavior = false;
             this.lvProductSuppliers.View = System.Windows.Forms.View.Details;
             // 
-            // pbImage
-            // 
-            this.pbImage.Location = new System.Drawing.Point(357, 182);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(276, 151);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImage.TabIndex = 27;
-            this.pbImage.TabStop = false;
-            // 
             // Product
             // 
             this.Product.Text = "Product";
@@ -343,6 +336,15 @@
             this.Supplier.Text = "Supplier";
             this.Supplier.Width = 137;
             // 
+            // pbImage
+            // 
+            this.pbImage.Location = new System.Drawing.Point(357, 182);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(276, 151);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImage.TabIndex = 27;
+            this.pbImage.TabStop = false;
+            // 
             // ofdImage
             // 
             this.ofdImage.FileName = "openFileDialog1";
@@ -352,10 +354,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(656, 421);
+            this.ClientSize = new System.Drawing.Size(656, 432);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.lvProductSuppliers);
-            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.btnEditProducts);
             this.Controls.Add(this.btnImg);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
@@ -399,7 +401,7 @@
         private MetroFramework.Controls.MetroTile btnConfirm;
         private MetroFramework.Controls.MetroTile btnCancel;
         private MetroFramework.Controls.MetroTile btnImg;
-        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile btnEditProducts;
         private System.Windows.Forms.ListView lvProductSuppliers;
         private System.Windows.Forms.ColumnHeader Product;
         private System.Windows.Forms.ColumnHeader Supplier;

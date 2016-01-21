@@ -61,18 +61,8 @@ namespace TravelExpertsDesktopApp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            //handle the ToString currency format
-            string newBasePrice = txtPrice.Text.Replace(",","").Replace("$","");
-            string newCommission = txtCommission.Text.Replace(",", "").Replace("$", "");
-            //create a new package from the form controls     
             Package newPackage = new Package();
-            newPackage.PkgName = txtName.Text;
-            newPackage.PkgStartDate = dtpStart.Value;
-            newPackage.PkgEndDate = dtpEnd.Value;
-            newPackage.PkgDesc = txtDescription.Text;                
-            newPackage.PkgBasePrice = Convert.ToDecimal(newBasePrice);
-            newPackage.PkgAgencyCommission = Convert.ToDecimal(newCommission);
-            newPackage.PkgImg = activePackage.PkgImg;
+            newPackage = createPackage();
             try
             {
                 if (this.message == "Enter Package Details")//the user is in the add form
@@ -108,6 +98,24 @@ namespace TravelExpertsDesktopApp
             
         }
 
+        private Package createPackage()
+        {
+            Package newPackage = new Package();
+            //handle the ToString currency format
+            string newBasePrice = txtPrice.Text.Replace(",", "").Replace("$", "");
+            string newCommission = txtCommission.Text.Replace(",", "").Replace("$", "");
+            //create a new package from the form controls     
+
+            newPackage.PkgName = txtName.Text;
+            newPackage.PkgStartDate = dtpStart.Value;
+            newPackage.PkgEndDate = dtpEnd.Value;
+            newPackage.PkgDesc = txtDescription.Text;
+            newPackage.PkgBasePrice = Convert.ToDecimal(newBasePrice);
+            newPackage.PkgAgencyCommission = Convert.ToDecimal(newCommission);
+            newPackage.PkgImg = activePackage.PkgImg;
+            return newPackage;
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {            
             this.Close();
@@ -140,6 +148,21 @@ namespace TravelExpertsDesktopApp
             else
             {
                 pbImage = null;
+            }
+        }
+
+        private void btnEditProducts_Click(object sender, EventArgs e)
+        {
+            if (activePackage != null)
+            {
+                frmEditProductSuppliers myForm = new frmEditProductSuppliers(activePackage);
+                myForm.ShowDialog();
+            }
+            else
+            {
+                Package p = createPackage();
+                frmEditProductSuppliers myForm = new frmEditProductSuppliers(p);
+                myForm.ShowDialog();
             }
         }
                

@@ -34,6 +34,32 @@ namespace TravelExpertsDesktopApp
         {
             ClearControls();
             updatePackages();
+            fillDGVs();       
+        }
+        //initialize the data grid views on the Manage Product-Suppliers tab panel
+        private void fillDGVs()
+        {
+            dgvProducts.DataSource = TravelExpertsDB.TravelExpertsDB.GetAllProducts();
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.RowHeadersVisible = false;
+            dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProducts.Columns[0].Visible = false;            
+            dgvProducts.AutoResizeColumns();
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
+            dgvSuppliers.DataSource = TravelExpertsDB.TravelExpertsDB.GetAllSuppliers();
+            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSuppliers.RowHeadersVisible = false;
+            dgvSuppliers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvSuppliers.Columns[0].Visible = false;
+            dgvSuppliers.AutoResizeColumns();
+            dgvSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvResults.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvResults.RowHeadersVisible = false;
+            dgvResults.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;            
+            dgvResults.AutoResizeColumns();
+            dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         //fills the combo box with packages from the database
         private void updatePackages()
@@ -130,6 +156,7 @@ namespace TravelExpertsDesktopApp
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+            MessageBox.Show(this.Size.ToString());
         }
 
         //converts a byte array into an image object for display on the form
@@ -143,8 +170,34 @@ namespace TravelExpertsDesktopApp
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            editProductSuppliers edit = new editProductSuppliers(activePackage);
+            frmEditProductSuppliers edit = new frmEditProductSuppliers(activePackage);
             edit.ShowDialog();
+        }
+
+        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count != 0)
+            {
+                
+                Product selectedProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
+                int productId = selectedProduct.ProductId;
+                lblProdOrSup.Text = "All suppliers of " + selectedProduct.ProdName;
+                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(productId);
+                dgvResults.Columns[0].Visible = false;
+            }
+        }
+
+        private void dgvSuppliers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvSuppliers.SelectedRows.Count != 0)
+            {
+                
+                Supplier selectedSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;
+                int supplierId = selectedSupplier.SupplierID;
+                lblProdOrSup.Text = "All Products supplied by " + selectedSupplier.SupName;
+                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetProductsFromSupplierId(supplierId);
+                dgvResults.Columns[0].Visible = false;
+            }
         }
     }
 }

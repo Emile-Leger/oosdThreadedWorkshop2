@@ -10,5 +10,10 @@ namespace TravelExpertsDB
     {
         public int ProductId { get; set; } // pk   fk in Table Product_Suppliers
         public string ProdName { get; set; }
+
+        public override string ToString()
+        {
+            return ProdName;
+        }
     }
 }
