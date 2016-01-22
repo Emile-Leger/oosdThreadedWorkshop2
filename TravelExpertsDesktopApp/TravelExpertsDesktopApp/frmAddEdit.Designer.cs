@@ -249,10 +249,10 @@
             this.btnConfirm.ActiveControl = null;
             this.btnConfirm.CustomBackground = false;
             this.btnConfirm.CustomForeColor = false;
-            this.btnConfirm.Location = new System.Drawing.Point(357, 352);
+            this.btnConfirm.Location = new System.Drawing.Point(415, 362);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.PaintTileCount = true;
-            this.btnConfirm.Size = new System.Drawing.Size(123, 46);
+            this.btnConfirm.Size = new System.Drawing.Size(133, 46);
             this.btnConfirm.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnConfirm.StyleManager = null;
             this.btnConfirm.TabIndex = 22;
@@ -266,10 +266,10 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.CustomBackground = false;
             this.btnCancel.CustomForeColor = false;
-            this.btnCancel.Location = new System.Drawing.Point(497, 352);
+            this.btnCancel.Location = new System.Drawing.Point(554, 362);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.PaintTileCount = true;
-            this.btnCancel.Size = new System.Drawing.Size(136, 46);
+            this.btnCancel.Size = new System.Drawing.Size(133, 46);
             this.btnCancel.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnCancel.StyleManager = null;
             this.btnCancel.TabIndex = 23;
@@ -283,10 +283,10 @@
             this.btnImg.ActiveControl = null;
             this.btnImg.CustomBackground = false;
             this.btnImg.CustomForeColor = false;
-            this.btnImg.Location = new System.Drawing.Point(23, 352);
+            this.btnImg.Location = new System.Drawing.Point(137, 362);
             this.btnImg.Name = "btnImg";
             this.btnImg.PaintTileCount = true;
-            this.btnImg.Size = new System.Drawing.Size(131, 46);
+            this.btnImg.Size = new System.Drawing.Size(133, 46);
             this.btnImg.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnImg.StyleManager = null;
             this.btnImg.TabIndex = 24;
@@ -300,10 +300,10 @@
             this.btnEditProducts.ActiveControl = null;
             this.btnEditProducts.CustomBackground = false;
             this.btnEditProducts.CustomForeColor = false;
-            this.btnEditProducts.Location = new System.Drawing.Point(174, 352);
+            this.btnEditProducts.Location = new System.Drawing.Point(276, 362);
             this.btnEditProducts.Name = "btnEditProducts";
             this.btnEditProducts.PaintTileCount = true;
-            this.btnEditProducts.Size = new System.Drawing.Size(152, 46);
+            this.btnEditProducts.Size = new System.Drawing.Size(133, 46);
             this.btnEditProducts.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnEditProducts.StyleManager = null;
             this.btnEditProducts.TabIndex = 25;
@@ -319,9 +319,10 @@
             this.Product,
             this.Supplier});
             this.lvProductSuppliers.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvProductSuppliers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvProductSuppliers.Location = new System.Drawing.Point(357, 78);
             this.lvProductSuppliers.Name = "lvProductSuppliers";
-            this.lvProductSuppliers.Size = new System.Drawing.Size(276, 98);
+            this.lvProductSuppliers.Size = new System.Drawing.Size(330, 98);
             this.lvProductSuppliers.TabIndex = 26;
             this.lvProductSuppliers.UseCompatibleStateImageBehavior = false;
             this.lvProductSuppliers.View = System.Windows.Forms.View.Details;
@@ -340,7 +341,7 @@
             // 
             this.pbImage.Location = new System.Drawing.Point(357, 182);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(276, 151);
+            this.pbImage.Size = new System.Drawing.Size(330, 151);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImage.TabIndex = 27;
             this.pbImage.TabStop = false;
@@ -354,7 +355,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(656, 432);
+            this.ClientSize = new System.Drawing.Size(724, 469);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.lvProductSuppliers);
             this.Controls.Add(this.btnEditProducts);

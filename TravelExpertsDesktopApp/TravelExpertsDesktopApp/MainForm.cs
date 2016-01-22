@@ -34,7 +34,8 @@ namespace TravelExpertsDesktopApp
         {
             ClearControls();
             updatePackages();
-            fillDGVs();       
+            fillDGVs(); 
+            //tcPackages.SelectedTab = sel
         }
         //initialize the data grid views on the Manage Product-Suppliers tab panel
         private void fillDGVs()
@@ -78,7 +79,11 @@ namespace TravelExpertsDesktopApp
             myForm.ShowDialog();
             if (myForm.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("Successfully added" + myForm.activePackage);
+                MessageBox.Show("Successfully added " + myForm.activePackage);
+                ClearControls();
+                updatePackages();
+                fillDGVs(); 
+
             }
             else if (myForm.DialogResult == DialogResult.Abort)
             {
@@ -88,6 +93,8 @@ namespace TravelExpertsDesktopApp
         //show the add/edit dialogue, in edit mode, ie imports the active package
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            
+            MessageBox.Show(pnlBck.BackColor.ToString());
             if (activePackage != null)
             {
                 frmAddEdit myForm = new frmAddEdit(EDIT_MESSAGE, activePackage);
@@ -150,7 +157,7 @@ namespace TravelExpertsDesktopApp
             {
                 ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
                 lvProductSuppliers.Items.Add(lvi);
-            }           
+            }         
         }
        
         private void btnExit_Click(object sender, EventArgs e)
@@ -166,32 +173,31 @@ namespace TravelExpertsDesktopApp
             {
                 return Image.FromStream(ms);
             }
-        }
+        }        
+        
+                    
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            frmEditProductSuppliers edit = new frmEditProductSuppliers(activePackage);
-            edit.ShowDialog();
-        }
-
-        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvProducts.SelectedRows.Count != 0)
+            if (activePackage != null)
             {
-                
-                Product selectedProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
-                int productId = selectedProduct.ProductId;
-                lblProdOrSup.Text = "All suppliers of " + selectedProduct.ProdName;
-                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(productId);
-                dgvResults.Columns[0].Visible = false;
+                DialogResult result = MessageBox.Show("Really delete " + activePackage + " ? ", "Delete Package", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    TravelExpertsDB.TravelExpertsDB.RemoveAllProductSuppliersFromPackage(activePackage.PackageId);
+                    TravelExpertsDB.TravelExpertsDB.DeletePackage(activePackage.PackageId);
+                    MessageBox.Show("Successfully deleted " + activePackage);
+                    updatePackages();                    
+                }
             }
         }
-
-        private void dgvSuppliers_SelectionChanged(object sender, EventArgs e)
+                
+        //populates the datagrid view with the list of suppliers that provide the selected project
+        private void dgvSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSuppliers.SelectedRows.Count != 0)
             {
-                
+
                 Supplier selectedSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;
                 int supplierId = selectedSupplier.SupplierID;
                 lblProdOrSup.Text = "All Products supplied by " + selectedSupplier.SupName;
@@ -199,5 +205,18 @@ namespace TravelExpertsDesktopApp
                 dgvResults.Columns[0].Visible = false;
             }
         }
+        //populates the datagrid view with the products supplied by the selected supplier
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count != 0)
+            {
+
+                Product selectedProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
+                int productId = selectedProduct.ProductId;
+                lblProdOrSup.Text = "All suppliers of " + selectedProduct.ProdName;
+                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(productId);
+                dgvResults.Columns[0].Visible = false;
+            }
+        }               
     }
 }

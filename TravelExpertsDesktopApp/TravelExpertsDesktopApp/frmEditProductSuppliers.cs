@@ -14,8 +14,7 @@ namespace TravelExpertsDesktopApp
 {
     public partial class frmEditProductSuppliers : MetroFramework.Forms.MetroForm
     {
-        List<Product_Supplier> prodSups; //the complete list of product suppliers
-        List<Product_Supplier> addedProdSups;//the list of Product_Suppliers added, waiting to be committed to the package
+        List<Product_Supplier> prodSups; //the complete list of product suppliers        
         public Package activePackage { get; set; } //the selected package
         public Product_Supplier selectedProductSupplier { get; set; } //the product suppliers selected from the list of active package product suppliers
 
@@ -48,6 +47,7 @@ namespace TravelExpertsDesktopApp
         //add the product_Supplier selected from the combo box to the package.
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (cbProductSuppliers.SelectedItem != null)

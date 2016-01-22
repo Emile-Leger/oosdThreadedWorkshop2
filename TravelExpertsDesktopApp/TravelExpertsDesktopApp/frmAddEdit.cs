@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravelExpertsDB;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace TravelExpertsDesktopApp
 {
@@ -57,18 +58,21 @@ namespace TravelExpertsDesktopApp
                 ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
                 lvProductSuppliers.Items.Add(lvi);
             }
+            lvProductSuppliers.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Package newPackage = new Package();
-            newPackage = createPackage();
+            Package newPackage = createPackage();
             try
             {
                 if (this.message == "Enter Package Details")//the user is in the add form
                 {
-                    if (TravelExpertsDB.TravelExpertsDB.AddPackage(newPackage) > 0)
+                    int newID = TravelExpertsDB.TravelExpertsDB.AddPackage(newPackage);
+                    if (newID != -1)
                     {
+                        newPackage.PackageId = newID;
+                        this.activePackage = newPackage;
                         this.DialogResult = DialogResult.OK;                        
                         this.Close();
                     }
@@ -93,7 +97,7 @@ namespace TravelExpertsDesktopApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Add Failed "+ ex.Message);
             }
             
         }

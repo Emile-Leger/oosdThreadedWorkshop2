@@ -13,52 +13,6 @@ namespace TravelExpertsDB
     {
         ////******************** Packages From Products Query ***************
 
-        // select the list of products for each package given the PackageId from table Packages
-        public static List<Product> GetProductsFromPackageId(int PackageId)
-        // Get the Lsit of products from Products Table for a given PackageID from Table Packages
-        // PackageId is an int and the PK for Table Package
-        // returns List type Package, null if no package or exceptio
-        // throws SqlException and Exception
-        // checked Jan 16 DS
-        {
-            SqlConnection connection = MMATravelExperts.GetConnection();
-            List<Product> ListProducts = new List<Product>();
-            string selectStatement = "SELECT p.ProductID, p.ProdName FROM Packages pack, " +
-                    "Packages_Products_Suppliers pps, Products_Suppliers ps, Products p " +
-                    "WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and " +
-                    "p.ProductId=ps.ProductId and pack.PackageId=@PackageId";
-//SELECT p.ProductID, p.ProdName FROM Packages pack, 
-//       Packages_Products_Suppliers pps, Products_Suppliers ps, Products p 
-//       WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and 
-//       p.ProductId=ps.ProductId and pack.PackageId=1
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@PackageId", PackageId);
-            try
-            {
-                connection.Open();
-                SqlDataReader pkgReader = selectCommand.ExecuteReader();
-                while (pkgReader.Read())
-                {
-                    Product prod = new Product();
-                    prod.ProdName= Convert.ToString(pkgReader["ProdName"]);
-                    prod.ProductId=(int)pkgReader["ProductId"];
-                    ListProducts.Add(prod);
-                }
-            }
-            catch (SqlException SqlEx)
-            {
-                throw SqlEx;
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return ListProducts;  // return the list of products
-        }
         
 
         
@@ -192,10 +146,20 @@ namespace TravelExpertsDB
                 if (numRows > 0)
                 {
                     int prodIDcheck=0;
-                    string selectStatement = "SELECT IDENT_CURRENT('PackageId') FROM Packages";
+                    string selectStatement = "SELECT PackageId FROM Packages where PkgName=@PkgName and PkgStartDate=@PkgStartDate and PkgEndDate=@PkgEndDate "+
+                                             "and PkgDesc=@PkgDesc and PkgBasePrice=@PkgBasePrice and PkgAgencyCommission=@PkgAgencyCommission";
                     SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                    int prodId = (int)selectCommand.ExecuteScalar();
-                    if (prodId != null) prodIDcheck = (int)prodId;
+                    selectCommand.Parameters.AddWithValue("@PkgName", pkg.PkgName);
+                    selectCommand.Parameters.AddWithValue("@PkgStartDate", pkg.PkgStartDate);
+                    selectCommand.Parameters.AddWithValue("@PkgEndDate", pkg.PkgEndDate);
+                    selectCommand.Parameters.AddWithValue("@PkgDesc", pkg.PkgDesc);
+                    selectCommand.Parameters.AddWithValue("@PkgBasePrice", pkg.PkgBasePrice);
+                    selectCommand.Parameters.AddWithValue("@PkgAgencyCommission", pkg.PkgAgencyCommission);
+                    SqlDataReader reader = selectCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        prodIDcheck = Convert.ToInt32(reader["PackageId"]);
+                    }                    
                     return prodIDcheck;
                 }
                 else
@@ -595,6 +559,53 @@ namespace TravelExpertsDB
             }
             return products;  // return the list of products
         }
+
+        // select the list of products for each package given the PackageId from table Packages
+        public static List<Product> GetProductsFromPackageId(int PackageId)
+        // Get the Lsit of products from Products Table for a given PackageID from Table Packages
+        // PackageId is an int and the PK for Table Package
+        // returns List type Package, null if no package or exceptio
+        // throws SqlException and Exception
+        // checked Jan 16 DS
+        {
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            List<Product> ListProducts = new List<Product>();
+            string selectStatement = "SELECT p.ProductID, p.ProdName FROM Packages pack, " +
+                    "Packages_Products_Suppliers pps, Products_Suppliers ps, Products p " +
+                    "WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and " +
+                    "p.ProductId=ps.ProductId and pack.PackageId=@PackageId";
+            //SELECT p.ProductID, p.ProdName FROM Packages pack, 
+            //       Packages_Products_Suppliers pps, Products_Suppliers ps, Products p 
+            //       WHERE pack.PackageId=pps.PackageId and pps.ProductSupplierId=ps.ProductSupplierId and 
+            //       p.ProductId=ps.ProductId and pack.PackageId=1
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@PackageId", PackageId);
+            try
+            {
+                connection.Open();
+                SqlDataReader pkgReader = selectCommand.ExecuteReader();
+                while (pkgReader.Read())
+                {
+                    Product prod = new Product();
+                    prod.ProdName = Convert.ToString(pkgReader["ProdName"]);
+                    prod.ProductId = (int)pkgReader["ProductId"];
+                    ListProducts.Add(prod);
+                }
+            }
+            catch (SqlException SqlEx)
+            {
+                throw SqlEx;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ListProducts;  // return the list of products
+        }
         #endregion
 
         #region Suppliers
@@ -880,7 +891,7 @@ namespace TravelExpertsDB
                 
                 List<Product_Supplier> productSuppliersList = new List<Product_Supplier>();
                 while (reader.Read())
-                {
+                {                    
                     Product_Supplier myPS = new Product_Supplier();
                     myPS.ProductSupplierId = (int)reader["ProductSupplierId"];
                     myPS.ProductName = reader["ProdName"].ToString();
@@ -971,6 +982,29 @@ namespace TravelExpertsDB
                 connection.Close();
             }
         }
+
+        public static int RemoveAllProductSuppliersFromPackage(int packageID)
+        {
+            int results;
+            SqlConnection connection = MMATravelExperts.GetConnection();
+            string deleteStatement = "Delete from Packages_Products_Suppliers where PackageId=@PackageId";
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
+            deleteCommand.Parameters.AddWithValue("@PackageId",packageID);
+            try
+            {
+                connection.Open();
+                results = deleteCommand.ExecuteNonQuery();
+                return results;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         /// <summary>
         /// Adds the input product supplier to the input package with a new row inserted into the packages_products_suppliers table
         /// </summary>
@@ -1002,6 +1036,6 @@ namespace TravelExpertsDB
                 connection.Close();
             }
         }
-                                #endregion
     }
+                                #endregion    
 }
