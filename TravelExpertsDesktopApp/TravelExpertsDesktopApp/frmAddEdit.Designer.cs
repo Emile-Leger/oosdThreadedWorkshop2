@@ -60,7 +60,7 @@
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel2.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel2.Location = new System.Drawing.Point(13, 78);
+            this.metroLabel2.Location = new System.Drawing.Point(11, 112);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(100, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
@@ -78,7 +78,7 @@
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel3.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel3.Location = new System.Drawing.Point(13, 114);
+            this.metroLabel3.Location = new System.Drawing.Point(11, 148);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(71, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
@@ -96,7 +96,7 @@
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel4.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel4.Location = new System.Drawing.Point(13, 130);
+            this.metroLabel4.Location = new System.Drawing.Point(11, 164);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(65, 19);
             this.metroLabel4.Style = MetroFramework.MetroColorStyle.Blue;
@@ -114,7 +114,7 @@
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel5.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel5.Location = new System.Drawing.Point(13, 159);
+            this.metroLabel5.Location = new System.Drawing.Point(11, 193);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(72, 19);
             this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
@@ -132,7 +132,7 @@
             this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel6.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel6.Location = new System.Drawing.Point(13, 188);
+            this.metroLabel6.Location = new System.Drawing.Point(11, 222);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(84, 19);
             this.metroLabel6.Style = MetroFramework.MetroColorStyle.Blue;
@@ -150,7 +150,7 @@
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel7.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel7.Location = new System.Drawing.Point(13, 217);
+            this.metroLabel7.Location = new System.Drawing.Point(11, 251);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(77, 19);
             this.metroLabel7.Style = MetroFramework.MetroColorStyle.Blue;
@@ -163,7 +163,7 @@
             // dtpStart
             // 
             this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpStart.Location = new System.Drawing.Point(137, 113);
+            this.dtpStart.Location = new System.Drawing.Point(135, 147);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(200, 22);
             this.dtpStart.TabIndex = 15;
@@ -171,7 +171,7 @@
             // dtpEnd
             // 
             this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEnd.Location = new System.Drawing.Point(137, 130);
+            this.dtpEnd.Location = new System.Drawing.Point(135, 164);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(200, 22);
             this.dtpEnd.TabIndex = 16;
@@ -182,7 +182,7 @@
             this.txtName.CustomForeColor = false;
             this.txtName.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.txtName.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtName.Location = new System.Drawing.Point(137, 78);
+            this.txtName.Location = new System.Drawing.Point(135, 112);
             this.txtName.Multiline = false;
             this.txtName.Name = "txtName";
             this.txtName.SelectedText = "";
@@ -199,7 +199,7 @@
             this.txtPrice.CustomForeColor = false;
             this.txtPrice.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.txtPrice.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtPrice.Location = new System.Drawing.Point(137, 159);
+            this.txtPrice.Location = new System.Drawing.Point(135, 193);
             this.txtPrice.Multiline = false;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.SelectedText = "";
@@ -216,7 +216,7 @@
             this.txtCommission.CustomForeColor = false;
             this.txtCommission.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.txtCommission.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtCommission.Location = new System.Drawing.Point(137, 188);
+            this.txtCommission.Location = new System.Drawing.Point(135, 222);
             this.txtCommission.Multiline = false;
             this.txtCommission.Name = "txtCommission";
             this.txtCommission.SelectedText = "";
@@ -233,7 +233,7 @@
             this.txtDescription.CustomForeColor = false;
             this.txtDescription.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.txtDescription.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtDescription.Location = new System.Drawing.Point(137, 217);
+            this.txtDescription.Location = new System.Drawing.Point(135, 251);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.SelectedText = "";
@@ -249,7 +249,7 @@
             this.btnConfirm.ActiveControl = null;
             this.btnConfirm.CustomBackground = false;
             this.btnConfirm.CustomForeColor = false;
-            this.btnConfirm.Location = new System.Drawing.Point(415, 362);
+            this.btnConfirm.Location = new System.Drawing.Point(413, 396);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.PaintTileCount = true;
             this.btnConfirm.Size = new System.Drawing.Size(133, 46);
@@ -266,7 +266,7 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.CustomBackground = false;
             this.btnCancel.CustomForeColor = false;
-            this.btnCancel.Location = new System.Drawing.Point(554, 362);
+            this.btnCancel.Location = new System.Drawing.Point(552, 396);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.PaintTileCount = true;
             this.btnCancel.Size = new System.Drawing.Size(133, 46);
@@ -283,7 +283,7 @@
             this.btnImg.ActiveControl = null;
             this.btnImg.CustomBackground = false;
             this.btnImg.CustomForeColor = false;
-            this.btnImg.Location = new System.Drawing.Point(137, 362);
+            this.btnImg.Location = new System.Drawing.Point(135, 396);
             this.btnImg.Name = "btnImg";
             this.btnImg.PaintTileCount = true;
             this.btnImg.Size = new System.Drawing.Size(133, 46);
@@ -300,7 +300,7 @@
             this.btnEditProducts.ActiveControl = null;
             this.btnEditProducts.CustomBackground = false;
             this.btnEditProducts.CustomForeColor = false;
-            this.btnEditProducts.Location = new System.Drawing.Point(276, 362);
+            this.btnEditProducts.Location = new System.Drawing.Point(274, 396);
             this.btnEditProducts.Name = "btnEditProducts";
             this.btnEditProducts.PaintTileCount = true;
             this.btnEditProducts.Size = new System.Drawing.Size(133, 46);
@@ -320,9 +320,9 @@
             this.Supplier});
             this.lvProductSuppliers.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvProductSuppliers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvProductSuppliers.Location = new System.Drawing.Point(357, 78);
+            this.lvProductSuppliers.Location = new System.Drawing.Point(355, 88);
             this.lvProductSuppliers.Name = "lvProductSuppliers";
-            this.lvProductSuppliers.Size = new System.Drawing.Size(330, 98);
+            this.lvProductSuppliers.Size = new System.Drawing.Size(330, 122);
             this.lvProductSuppliers.TabIndex = 26;
             this.lvProductSuppliers.UseCompatibleStateImageBehavior = false;
             this.lvProductSuppliers.View = System.Windows.Forms.View.Details;
@@ -339,7 +339,7 @@
             // 
             // pbImage
             // 
-            this.pbImage.Location = new System.Drawing.Point(357, 182);
+            this.pbImage.Location = new System.Drawing.Point(355, 216);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(330, 151);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -355,7 +355,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(724, 469);
+            this.ClientSize = new System.Drawing.Size(724, 483);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.lvProductSuppliers);
             this.Controls.Add(this.btnEditProducts);
@@ -379,6 +379,7 @@
             this.Name = "frmAddEdit";
             this.Resizable = false;
             this.Text = "Add Travel Package";
+            this.Load += new System.EventHandler(this.frmAddEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

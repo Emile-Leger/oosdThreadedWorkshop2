@@ -23,7 +23,7 @@ namespace TravelExpertsDesktopApp
         {
             InitializeComponent();
             activePackage = package;
-            this.Text = activePackage.PkgName;
+            Text = activePackage.PkgName;
             activePackage.fillSuppliers();
         }
         //on form load, fill the list of product suppliers and update the display
@@ -50,10 +50,9 @@ namespace TravelExpertsDesktopApp
 
             try
             {
-                if (cbProductSuppliers.SelectedItem != null)
+                if (selectedProductSupplier != null)
                 {
-                    Product_Supplier newPs = (Product_Supplier)cbProductSuppliers.SelectedItem;
-                    TravelExpertsDB.TravelExpertsDB.addProductSupplierToPackage(newPs, activePackage);
+                    TravelExpertsDB.TravelExpertsDB.addProductSupplierToPackage(selectedProductSupplier, activePackage);
                     activePackage.fillSuppliers();
                     updateDisplay();
                 }
@@ -115,6 +114,42 @@ namespace TravelExpertsDesktopApp
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            cbProductSuppliers.Items.Clear();
+            cbProductSuppliers.Invalidate();
+            List<Product_Supplier> searchList = SearchProdSups(txtSearch.Text);
+            foreach (var prodsup in searchList)
+            {
+                cbProductSuppliers.Items.Add(prodsup);
+            }
+
+            cbProductSuppliers.DropDownHeight = cbProductSuppliers.MaxDropDownItems * cbProductSuppliers.ItemHeight;
+            if (cbProductSuppliers.DroppedDown == true)
+            {
+                cbProductSuppliers.DroppedDown = false;
+            }
+            cbProductSuppliers.DroppedDown = true;
+            Cursor.Current = Cursors.Default;
+        }
+
+        public List<Product_Supplier> SearchProdSups(string input)
+        {
+            var results = from prodSup in prodSups
+                          where prodSup.ProductName.ToLower().Contains(input.ToLower()) || prodSup.SupName.ToLower().Contains(input.ToLower())
+                          select prodSup;
+            return results.ToList();
+        }
+
+        private void cbProductSuppliers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            selectedProductSupplier = (Product_Supplier)cbProductSuppliers.SelectedItem;
+            txtSearch.Text = selectedProductSupplier.ToString();
+            cbProductSuppliers.DroppedDown = false;
+
+        }       
     }
 }

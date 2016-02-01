@@ -47,3 +47,4 @@ C:\Users\715289\Documents\Visual Studio 2013\Projects\PROJECT 2\oosdThreadedWork
 C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.dll
 C:\Users\702543\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\bin\Debug\ClassLibrary1.pdb
 C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.frmEditProductSuppliers.resources
+C:\Users\433080\Documents\Visual Studio 2013\Projects\oosdThreadedWorkshop2\TravelExpertsDesktopApp\TravelExpertsDesktopApp\obj\Debug\TravelExpertsDesktopApp.SearchTest.resources

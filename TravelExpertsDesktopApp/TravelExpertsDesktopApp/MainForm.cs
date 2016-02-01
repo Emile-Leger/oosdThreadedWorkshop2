@@ -17,50 +17,72 @@ namespace TravelExpertsDesktopApp
 {
 
    
-    public partial class MainForm : MetroFramework.Forms.MetroForm
+    public partial class MainForm : MetroFramework.Forms.MetroForm 
     {
+        const string PRODUCT_MESSAGE = "Edit Product Name";
+        const string SUPPLIER_MESSAGE = "Edit Supplier Name";
         const string ADD_MESSAGE = "Enter Package Details";
         const string EDIT_MESSAGE = "Edit Package Details";
+
+        private Product activeProduct;
         public Package activePackage;
         public List<Package> packages;
+        public Product ActiveProduct
+        {
+            get
+            {
+                return activeProduct;
+            }
+            set
+            {
+                btnEditProdSupp.Text = SUPPLIER_MESSAGE;
+                btnAddProdSup.Text = "Add Supplier";
+                lblEntityMode.Text = "Supplier";
+                lblProdOrSup.Text = "Products supplied by " + activeSupplier.SupName;
+                lblBy.Text = "by";
+                txtName.Text = activeSupplier.SupName;
+                lblSupplier.Text = activeSupplier.SupName;                
+                activeProduct = value;
+            }
+        }
+        public Supplier activeSupplier;        
+        public List<Product_Supplier> productSuppliers { get { return TravelExpertsDB.TravelExpertsDB.getAllProductSuppliers(); } }//look at
 
         public MainForm()
         {
             InitializeComponent();
-            this.StyleManager = msmStyle;            
+                                     
         }
         //when the form loads, display the names of each product in the combo box
         private void MainForm_Load(object sender, EventArgs e)
         {
+            StyleManager = msmStyle;
+            msmStyle.Style = MetroFramework.MetroColorStyle.Blue;
             ClearControls();
             updatePackages();
-            fillDGVs(); 
-            //tcPackages.SelectedTab = sel
+            fillDGVs();
+             
+            
         }
         //initialize the data grid views on the Manage Product-Suppliers tab panel
         private void fillDGVs()
         {
-            dgvProducts.DataSource = TravelExpertsDB.TravelExpertsDB.GetAllProducts();
-            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.RowHeadersVisible = false;
-            dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvProducts.Columns[0].Visible = false;            
-            dgvProducts.AutoResizeColumns();
-            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            
             dgvSuppliers.DataSource = TravelExpertsDB.TravelExpertsDB.GetAllSuppliers();
-            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSuppliers.RowHeadersVisible = false;
-            dgvSuppliers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvSuppliers.Columns[0].Visible = false;
-            dgvSuppliers.AutoResizeColumns();
-            dgvSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            dgvResults.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvResults.RowHeadersVisible = false;
-            dgvResults.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;            
-            dgvResults.AutoResizeColumns();
-            dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.DataSource = TravelExpertsDB.TravelExpertsDB.GetAllProducts();
+            foreach (var ctrl in tpProductSuppliers.Controls)
+            {
+                if (ctrl is DataGridView)
+                {
+                    DataGridView dgv = (DataGridView)ctrl;
+                    dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dgv.RowHeadersVisible = false;
+                    dgv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                    if (dgv.Name != "dgvResults")
+                        dgv.Columns[0].Visible = false;
+                    dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgv.AutoResizeColumns();
+                }
+            }
         }
         //fills the combo box with packages from the database
         private void updatePackages()
@@ -83,7 +105,6 @@ namespace TravelExpertsDesktopApp
                 ClearControls();
                 updatePackages();
                 fillDGVs(); 
-
             }
             else if (myForm.DialogResult == DialogResult.Abort)
             {
@@ -92,14 +113,12 @@ namespace TravelExpertsDesktopApp
         }
         //show the add/edit dialogue, in edit mode, ie imports the active package
         private void btnEdit_Click(object sender, EventArgs e)
-        {
-            
-            MessageBox.Show(pnlBck.BackColor.ToString());
+        {                        
             if (activePackage != null)
             {
                 frmAddEdit myForm = new frmAddEdit(EDIT_MESSAGE, activePackage);
                 myForm.ShowDialog();
-                if (myForm.DialogResult == System.Windows.Forms.DialogResult.OK)
+                if (myForm.DialogResult == DialogResult.OK)
                 {
                     updatePackages();
                     ClearControls();
@@ -151,7 +170,7 @@ namespace TravelExpertsDesktopApp
             lblPrice.Text = activePackage.PkgBasePrice.ToString("c");
             lblCommission.Text = activePackage.PkgAgencyCommission.ToString("c");
             cbPackages.Text = activePackage.PackageId.ToString();
-            if (activePackage.PkgImg != null)
+            if (activePackage.PkgImg.Length != 4)
                 pbPkgImg.Image = MainForm.arrayToImage(activePackage.PkgImg);
             foreach (Product_Supplier ps in activePackage.productSuppliers)
             {
@@ -162,8 +181,7 @@ namespace TravelExpertsDesktopApp
        
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MessageBox.Show(this.Size.ToString());
+            this.Close();            
         }
 
         //converts a byte array into an image object for display on the form
@@ -174,9 +192,7 @@ namespace TravelExpertsDesktopApp
                 return Image.FromStream(ms);
             }
         }        
-        
-                    
-
+                            
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (activePackage != null)
@@ -187,7 +203,8 @@ namespace TravelExpertsDesktopApp
                     TravelExpertsDB.TravelExpertsDB.RemoveAllProductSuppliersFromPackage(activePackage.PackageId);
                     TravelExpertsDB.TravelExpertsDB.DeletePackage(activePackage.PackageId);
                     MessageBox.Show("Successfully deleted " + activePackage);
-                    updatePackages();                    
+                    updatePackages();
+                    ClearControls();                    
                 }
             }
         }
@@ -196,13 +213,12 @@ namespace TravelExpertsDesktopApp
         private void dgvSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSuppliers.SelectedRows.Count != 0)
-            {
-
-                Supplier selectedSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;
-                int supplierId = selectedSupplier.SupplierID;
-                lblProdOrSup.Text = "All Products supplied by " + selectedSupplier.SupName;
-                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetProductsFromSupplierId(supplierId);
-                dgvResults.Columns[0].Visible = false;
+            {                
+                
+                activeSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;                
+               
+                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetProductsFromSupplierId(activeSupplier.SupplierID);
+                dgvResults.Columns[0].Visible = false;                
             }
         }
         //populates the datagrid view with the products supplied by the selected supplier
@@ -210,13 +226,129 @@ namespace TravelExpertsDesktopApp
         {
             if (dgvProducts.SelectedRows.Count != 0)
             {
-
-                Product selectedProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
-                int productId = selectedProduct.ProductId;
-                lblProdOrSup.Text = "All suppliers of " + selectedProduct.ProdName;
-                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(productId);
+                btnEditProdSupp.Text = PRODUCT_MESSAGE;
+                btnAddProdSup.Text = "Add Product";
+                lblEntityMode.Text = "Product";
+                ActiveProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;                
+                lblProdOrSup.Text = "Suppliers of " + ActiveProduct.ProdName;
+                txtName.Text = ActiveProduct.ProdName;
+                lblProduct.Text = ActiveProduct.ProdName;
+                dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(ActiveProduct.ProductId);
                 dgvResults.Columns[0].Visible = false;
             }
-        }               
+        }
+        //Creates a new product-supplier from the selections of the first two datagrid views, the 
+        private void btnCreateProdSup_Click(object sender, EventArgs e)
+        {
+            if (ActiveProduct != null && activeSupplier != null)
+            {                
+                Product_Supplier newProdSup = createProductSupplier();
+                if (ProdSupDoesNotExist(newProdSup))
+                {
+                    newProdSup.ProductSupplierId = TravelExpertsDB.TravelExpertsDB.AddProduct_Supplier(newProdSup);
+                    MessageBox.Show("Added " + newProdSup);
+                    fillDGVs();
+                }
+                else
+                {
+                    MessageBox.Show(newProdSup + " already exists and was not added.");
+                }
+               
+            }
+        }
+
+        // creates a Product_Supplier obbject from the selected indices of each datagrid
+        private Product_Supplier createProductSupplier()
+        {
+            Product_Supplier newProdSup = new Product_Supplier();
+            newProdSup.ProductId = ActiveProduct.ProductId;
+            newProdSup.ProductName = ActiveProduct.ProdName;
+            newProdSup.SupName = activeSupplier.SupName;
+            newProdSup.SupplierId = activeSupplier.SupplierID;
+            return newProdSup;
+        }
+
+        //checks if the product supplier the user wants to add exists.
+        public bool ProdSupDoesNotExist(Product_Supplier newPS)
+        {
+            var prodSups = productSuppliers.Where<Product_Supplier>(x => x.ProductName == newPS.ProductName && x.SupName == newPS.SupName);
+            if (prodSups.Count() == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }        
+
+        //edits the name of a product or supplier 
+        private void btnEditProdSupp_Click(object sender, EventArgs e)
+        {
+            //the user wants to edit a product
+            if (btnEditProdSupp.Text == PRODUCT_MESSAGE)
+            {
+                Product newProduct = new Product();
+                newProduct.ProdName = txtName.Text;
+                newProduct.ProductId = ActiveProduct.ProductId;
+                TravelExpertsDB.TravelExpertsDB.UpdateProduct(ActiveProduct,newProduct);
+                fillDGVs();
+            }
+            //the user wants to edit a supplier
+            if(btnEditProdSupp.Text == SUPPLIER_MESSAGE)
+            {                
+                Supplier newSupp = new Supplier();
+                newSupp.SupName = txtName.Text;
+                newSupp.SupplierID = activeSupplier.SupplierID;
+                TravelExpertsDB.TravelExpertsDB.UpdateSupplier(activeSupplier,newSupp);
+                fillDGVs();
+            }
+        }
+        //add a new product or supplier.
+        private void btnAddProdSup_Click(object sender, EventArgs e)
+        {
+            //the user wants to add a product
+            if (btnEditProdSupp.Text == PRODUCT_MESSAGE)
+            {
+                Product newProduct = new Product();
+                newProduct.ProdName = txtNewName.Text;                
+                TravelExpertsDB.TravelExpertsDB.AddProduct(newProduct);
+                fillDGVs();
+            }
+            //the user wants to add a supplier
+            if (btnEditProdSupp.Text == SUPPLIER_MESSAGE)
+            {
+                Supplier newSupp = new Supplier();
+                newSupp.SupName = txtNewName.Text;
+                newSupp.SupplierID = GenerateSupplierId();
+                TravelExpertsDB.TravelExpertsDB.AddSupplier(newSupp);
+                fillDGVs();
+            }
+        }
+
+        public void clearSelectedIndices()
+        {
+            dgvProducts.ClearSelection();
+            dgvSuppliers.ClearSelection();
+            dgvResults.ClearSelection();
+            txtName.Text = "";
+            txtNewName.Text = "";
+            lblBy.Text = "";
+            lblProduct.Text = "";
+            lblSupplier.Text = "";
+        }
+        //generates a unique supplier ID for creating a new supplier.
+        public int GenerateSupplierId()
+        {
+            List<Supplier> suppliers = TravelExpertsDB.TravelExpertsDB.GetAllSuppliers();
+            List<Supplier> sortedList = suppliers.OrderBy(x => x.SupplierID).ToList();
+            int newId = 0;
+            foreach (var supplier in sortedList)
+            {
+                if (newId == supplier.SupplierID)
+                    newId++;
+                else
+                    return newId;
+            }
+            return -1;
+        }
     }
 }

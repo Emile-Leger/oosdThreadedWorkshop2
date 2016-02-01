@@ -138,7 +138,10 @@ namespace TravelExpertsDB
             insertCommand.Parameters.AddWithValue("@PkgDesc", pkg.PkgDesc);
             insertCommand.Parameters.AddWithValue("@PkgBasePrice", pkg.PkgBasePrice);
             insertCommand.Parameters.AddWithValue("@PkgAgencyCommission", pkg.PkgAgencyCommission);
-            insertCommand.Parameters.AddWithValue("@PkgImg", pkg.PkgImg);
+            if (pkg.PkgImg == null)
+                insertCommand.Parameters.AddWithValue("@PkgImg", SqlDbType.VarBinary);
+            else
+                insertCommand.Parameters.AddWithValue("@PkgImg", pkg.PkgImg);
             try
             {
                 connection.Open();
@@ -394,7 +397,8 @@ namespace TravelExpertsDB
         #region Products
 
         /// <summary>
-        /// Add a product to the Product table
+        /// Add a product to the Products table 
+        /// bugfix E.L.
         /// </summary>
         /// <param name="prod">product instance</param>
         /// <returns>ProductId</returns>
@@ -405,18 +409,18 @@ namespace TravelExpertsDB
             // returns the ProductId of the row inserted or -1 if not added to table
             // throws SqlException and Exception
             SqlConnection connection = MMATravelExperts.GetConnection();
-            String insertStatement = "INSERT INTO Products (ProductId,ProdName) VALUES (@ProductId,@ProdName)";
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@ProductId", prod.ProductId);
-            insertCommand.Parameters.AddWithValue("@ProductName", prod.ProdName);
+            string insertStatement = "INSERT INTO Products (ProdName) VALUES (@ProdName)";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);            
+            insertCommand.Parameters.AddWithValue("@ProdName", prod.ProdName);
             try
             {
                 connection.Open();
                 int numRows = insertCommand.ExecuteNonQuery();
                 if (numRows>0)
                 {
-                    string selectStatement="SELECT IDENT_CURRENT('ProductId') FROM Products";
+                    string selectStatement="SELECT ProductId FROM Products where ProdName=@ProdName";
                     SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                    selectCommand.Parameters.AddWithValue("@ProdName", prod.ProdName);
                     int prodId = (int)(selectCommand.ExecuteScalar());
                     return prodId;
                 }
@@ -447,8 +451,8 @@ namespace TravelExpertsDB
             // returns true row updated, false row not updated
             // throws SqlException and Exception
             SqlConnection connection = MMATravelExperts.GetConnection();
-            string updateStatement="UPDATE Products SET ProductId=@newProductId, ProdName=@newProdName, "+
-                    "WHERE ProductId=@oldProductId and ProductName=@oldProdName";
+            string updateStatement="UPDATE Products SET ProdName=@newProdName "+
+                    "WHERE ProductId=@oldProductId and ProdName=@oldProdName";
             SqlCommand updateCommand = new SqlCommand(updateStatement,connection);
             // new product listing
             updateCommand.Parameters.AddWithValue("@newProductId",newProd.ProductId);
@@ -625,17 +629,7 @@ namespace TravelExpertsDB
             {
                 connection.Open();
                 int numRows = insertCommand.ExecuteNonQuery();
-                if (numRows > 0)
-                {
-                    string selectStatement = "SELECT IDENT_CURRENT('SupplierId') FROM Suppliers";
-                    SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                    int suppId = (int)(selectCommand.ExecuteScalar());
-                    return suppId;
-                }
-                else
-                {
-                    return -1;
-                }
+                return numRows;
             }
             catch (SqlException SqlEx)
             {
@@ -659,7 +653,7 @@ namespace TravelExpertsDB
             // returns true row updated, false row not updated
             // throws SqlException and Exception
             SqlConnection connection = MMATravelExperts.GetConnection();
-            string updateStatement = "UPDATE Suppliers SET SupplierId=@newSupplierId, SupName=@newSupName, " +
+            string updateStatement = "UPDATE Suppliers SET SupName=@newSupName " +
                     "WHERE SupplierId=@oldSupplierId and SupName=@oldSupName";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             // new supplier listing
@@ -783,10 +777,9 @@ namespace TravelExpertsDB
             // returns the ProductSupplierId (pk) of the row inserted or -1 if not added to table
             // throws SqlException and Exception
             SqlConnection connection = MMATravelExperts.GetConnection();
-            String insertStatement = "INSERT INTO Product_Suppliers (ProductSupplierId, ProductId, SupplierID) " +
-                "VALUES (@ProductSupplierId, @ProductId, @SupplierId)";
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@ProductSupplierId", prodSupp.ProductSupplierId);
+            String insertStatement = "INSERT INTO Products_Suppliers (ProductId, SupplierID) " +
+                                     "VALUES (@ProductId, @SupplierId)";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);            
             insertCommand.Parameters.AddWithValue("@ProductId", prodSupp.ProductId);
             insertCommand.Parameters.AddWithValue("@SupplierId", prodSupp.SupplierId);
             try
@@ -795,8 +788,10 @@ namespace TravelExpertsDB
                 int numRows = insertCommand.ExecuteNonQuery();
                 if (numRows > 0)
                 {
-                    string selectStatement = "SELECT IDENT_CURRENT('ProductSupplierId') FROM Product_Suppliers";
+                    string selectStatement = "SELECT ProductSupplierId FROM Products_Suppliers where ProductId=@ProductId and SupplierID=@SupplierID";
                     SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                    selectCommand.Parameters.AddWithValue("@ProductId",prodSupp.ProductId);
+                    selectCommand.Parameters.AddWithValue("@SupplierID",prodSupp.SupplierId);
                     int suppId = (int)(selectCommand.ExecuteScalar());
                     return suppId;
                 }

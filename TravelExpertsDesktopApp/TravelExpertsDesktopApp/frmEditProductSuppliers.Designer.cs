@@ -34,6 +34,7 @@
             this.btnClose = new MetroFramework.Controls.MetroButton();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.dgvProdSups = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdSups)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,13 +46,14 @@
             this.cbProductSuppliers.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.cbProductSuppliers.FormattingEnabled = true;
             this.cbProductSuppliers.ItemHeight = 23;
-            this.cbProductSuppliers.Location = new System.Drawing.Point(23, 116);
+            this.cbProductSuppliers.Location = new System.Drawing.Point(27, 116);
             this.cbProductSuppliers.Name = "cbProductSuppliers";
             this.cbProductSuppliers.Size = new System.Drawing.Size(331, 29);
             this.cbProductSuppliers.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbProductSuppliers.StyleManager = null;
             this.cbProductSuppliers.TabIndex = 0;
             this.cbProductSuppliers.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbProductSuppliers.SelectedIndexChanged += new System.EventHandler(this.cbProductSuppliers_SelectedIndexChanged);
             // 
             // metroLabel1
             // 
@@ -74,7 +76,7 @@
             // btnRemove
             // 
             this.btnRemove.Highlight = false;
-            this.btnRemove.Location = new System.Drawing.Point(193, 285);
+            this.btnRemove.Location = new System.Drawing.Point(197, 330);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(161, 55);
             this.btnRemove.Style = MetroFramework.MetroColorStyle.Blue;
@@ -87,20 +89,20 @@
             // btnClose
             // 
             this.btnClose.Highlight = false;
-            this.btnClose.Location = new System.Drawing.Point(23, 346);
+            this.btnClose.Location = new System.Drawing.Point(23, 391);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(331, 33);
+            this.btnClose.Size = new System.Drawing.Size(335, 55);
             this.btnClose.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnClose.StyleManager = null;
             this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Cancel";
+            this.btnClose.Text = "Close";
             this.btnClose.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Highlight = false;
-            this.btnAdd.Location = new System.Drawing.Point(23, 285);
+            this.btnAdd.Location = new System.Drawing.Point(23, 330);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(164, 55);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Blue;
@@ -121,21 +123,41 @@
             this.dgvProdSups.BackgroundColor = System.Drawing.Color.White;
             this.dgvProdSups.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProdSups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdSups.ColumnHeadersVisible = false;
             this.dgvProdSups.GridColor = System.Drawing.Color.White;
             this.dgvProdSups.Location = new System.Drawing.Point(27, 151);
             this.dgvProdSups.MultiSelect = false;
             this.dgvProdSups.Name = "dgvProdSups";
             this.dgvProdSups.ReadOnly = true;
             this.dgvProdSups.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvProdSups.Size = new System.Drawing.Size(331, 128);
+            this.dgvProdSups.Size = new System.Drawing.Size(331, 173);
             this.dgvProdSups.TabIndex = 8;
             this.dgvProdSups.SelectionChanged += new System.EventHandler(this.dgvProdSups_SelectionChanged);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.CustomBackground = false;
+            this.txtSearch.CustomForeColor = false;
+            this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtSearch.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.txtSearch.Location = new System.Drawing.Point(27, 116);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.Size = new System.Drawing.Size(303, 29);
+            this.txtSearch.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtSearch.StyleManager = null;
+            this.txtSearch.TabIndex = 9;
+            this.txtSearch.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSearch.UseStyleColors = false;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmEditProductSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 407);
+            this.ClientSize = new System.Drawing.Size(392, 483);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvProdSups);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
@@ -161,5 +183,6 @@
         private MetroFramework.Controls.MetroButton btnClose;
         private MetroFramework.Controls.MetroButton btnAdd;
         private System.Windows.Forms.DataGridView dgvProdSups;
+        private MetroFramework.Controls.MetroTextBox txtSearch;
     }
 }
