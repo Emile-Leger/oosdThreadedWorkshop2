@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace TravelExpertsDB
 {
+    /// <summary>
+    /// each database method on the form.
+    /// </summary>
     public static class TravelExpertsDB
     {
-        ////******************** Packages From Products Query ***************
-
-        
-
-        
-
+                
         #region Packages
         public static List<Package> GetAllPackages()
         {

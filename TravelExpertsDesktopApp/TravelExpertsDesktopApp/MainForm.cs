@@ -25,8 +25,27 @@ namespace TravelExpertsDesktopApp
         const string EDIT_MESSAGE = "Edit Package Details";
 
         private Product activeProduct;
+        private Supplier activeSupplier;
         public Package activePackage;
         public List<Package> packages;
+        public Supplier ActiveSupplier
+        {
+            get
+            {
+                return activeSupplier;
+            }
+            set
+            {
+                activeSupplier = value;
+                btnEditProdSupp.Text = SUPPLIER_MESSAGE;
+                btnAddProdSup.Text = "Add Supplier";
+                lblEntityMode.Text = "Supplier";
+                lblProdOrSup.Text = "Products supplied by " + ActiveSupplier.SupName;
+                lblBy.Text = "by";
+                txtName.Text = ActiveSupplier.SupName;
+                lblSupplier.Text = ActiveSupplier.SupName;                                
+            }
+        }
         public Product ActiveProduct
         {
             get
@@ -35,17 +54,15 @@ namespace TravelExpertsDesktopApp
             }
             set
             {
-                btnEditProdSupp.Text = SUPPLIER_MESSAGE;
-                btnAddProdSup.Text = "Add Supplier";
-                lblEntityMode.Text = "Supplier";
-                lblProdOrSup.Text = "Products supplied by " + activeSupplier.SupName;
-                lblBy.Text = "by";
-                txtName.Text = activeSupplier.SupName;
-                lblSupplier.Text = activeSupplier.SupName;                
                 activeProduct = value;
+                lblProdOrSup.Text = "Suppliers of " + ActiveProduct.ProdName;
+                txtName.Text = ActiveProduct.ProdName;
+                lblProduct.Text = ActiveProduct.ProdName;
+                btnEditProdSupp.Text = PRODUCT_MESSAGE;
+                btnAddProdSup.Text = "Add Product";
+                lblEntityMode.Text = "Product";                
             }
-        }
-        public Supplier activeSupplier;        
+        }               
         public List<Product_Supplier> productSuppliers { get { return TravelExpertsDB.TravelExpertsDB.getAllProductSuppliers(); } }//look at
 
         public MainForm()
@@ -155,10 +172,10 @@ namespace TravelExpertsDesktopApp
             lblPrice.Text = "";
             lblCommission.Text = "";
             lblDescription.Text = "";
-            txtSearch.Text = "";
+            //txtSearch.Text = "";
             pbPkgImg.Image = null;
             cbPackages.Focus();
-            txtSearch.Focus();
+            //txtSearch.Focus();
             lvProductSuppliers.Items.Clear();             
         }
         //Displays all the data from the active package
@@ -213,10 +230,8 @@ namespace TravelExpertsDesktopApp
         private void dgvSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSuppliers.SelectedRows.Count != 0)
-            {                
-                
-                activeSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;                
-               
+            {                                
+                ActiveSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;                               
                 dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetProductsFromSupplierId(activeSupplier.SupplierID);
                 dgvResults.Columns[0].Visible = false;                
             }
@@ -225,14 +240,8 @@ namespace TravelExpertsDesktopApp
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProducts.SelectedRows.Count != 0)
-            {
-                btnEditProdSupp.Text = PRODUCT_MESSAGE;
-                btnAddProdSup.Text = "Add Product";
-                lblEntityMode.Text = "Product";
-                ActiveProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;                
-                lblProdOrSup.Text = "Suppliers of " + ActiveProduct.ProdName;
-                txtName.Text = ActiveProduct.ProdName;
-                lblProduct.Text = ActiveProduct.ProdName;
+            {                
+                ActiveProduct = (Product)dgvProducts.SelectedRows[0].DataBoundItem;                                
                 dgvResults.DataSource = TravelExpertsDB.TravelExpertsDB.GetSuppliersFromProductId(ActiveProduct.ProductId);
                 dgvResults.Columns[0].Visible = false;
             }
@@ -349,6 +358,6 @@ namespace TravelExpertsDesktopApp
                     return newId;
             }
             return -1;
-        }
+        }      
     }
 }

@@ -36,14 +36,13 @@ namespace TravelExpertsDesktopApp
                         
         //get the product supplier selected by the user.
         private void dgvProdSups_SelectionChanged(object sender, EventArgs e)
-        {
-            
+        {            
             if (dgvProdSups.SelectedRows.Count != 0)
             {
                 selectedProductSupplier = (Product_Supplier)dgvProdSups.SelectedRows[0].DataBoundItem;                
-            }
-            
+            }            
         }
+
         //add the product_Supplier selected from the combo box to the package.
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -112,14 +111,13 @@ namespace TravelExpertsDesktopApp
         }
 
         private void btnClose_Click(object sender, EventArgs e)
-        {
+        {            
             this.Close();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            cbProductSuppliers.Items.Clear();
-            cbProductSuppliers.Invalidate();
+            cbProductSuppliers.Items.Clear();            
             List<Product_Supplier> searchList = SearchProdSups(txtSearch.Text);
             foreach (var prodsup in searchList)
             {
@@ -127,8 +125,8 @@ namespace TravelExpertsDesktopApp
             }
 
             cbProductSuppliers.DropDownHeight = cbProductSuppliers.MaxDropDownItems * cbProductSuppliers.ItemHeight;
-            if (cbProductSuppliers.DroppedDown == true)
-            {
+            if (cbProductSuppliers.DroppedDown == true && cbProductSuppliers.Items.Count != 0)
+            {                
                 cbProductSuppliers.DroppedDown = false;
             }
             cbProductSuppliers.DroppedDown = true;

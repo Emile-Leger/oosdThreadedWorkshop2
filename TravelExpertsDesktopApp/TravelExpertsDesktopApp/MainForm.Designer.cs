@@ -50,11 +50,8 @@
             this.btnDelete = new MetroFramework.Controls.MetroTile();
             this.btnAdd = new MetroFramework.Controls.MetroTile();
             this.btnEdit = new MetroFramework.Controls.MetroTile();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtSearch = new MetroFramework.Controls.MetroTextBox();
             this.lblPkgName = new MetroFramework.Controls.MetroLabel();
             this.cbPackages = new MetroFramework.Controls.MetroComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tpProductSuppliers = new MetroFramework.Controls.MetroTabPage();
             this.lblEntityMode = new System.Windows.Forms.Label();
             this.pnlNewProdSup = new System.Windows.Forms.Panel();
@@ -72,6 +69,8 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.tcPackages.SuspendLayout();
             this.tpPackages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPkgImg)).BeginInit();
@@ -91,7 +90,7 @@
             this.tcPackages.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.tcPackages.Location = new System.Drawing.Point(23, 63);
             this.tcPackages.Name = "tcPackages";
-            this.tcPackages.SelectedIndex = 1;
+            this.tcPackages.SelectedIndex = 0;
             this.tcPackages.Size = new System.Drawing.Size(1127, 398);
             this.tcPackages.Style = MetroFramework.MetroColorStyle.Blue;
             this.tcPackages.StyleManager = this.msmStyle;
@@ -102,6 +101,8 @@
             // 
             // tpPackages
             // 
+            this.tpPackages.Controls.Add(this.metroLabel10);
+            this.tpPackages.Controls.Add(this.metroLabel5);
             this.tpPackages.Controls.Add(this.lvProductSuppliers);
             this.tpPackages.Controls.Add(this.lblDescription);
             this.tpPackages.Controls.Add(this.metroLabel2);
@@ -119,11 +120,8 @@
             this.tpPackages.Controls.Add(this.btnDelete);
             this.tpPackages.Controls.Add(this.btnAdd);
             this.tpPackages.Controls.Add(this.btnEdit);
-            this.tpPackages.Controls.Add(this.label8);
-            this.tpPackages.Controls.Add(this.txtSearch);
             this.tpPackages.Controls.Add(this.lblPkgName);
             this.tpPackages.Controls.Add(this.cbPackages);
-            this.tpPackages.Controls.Add(this.label1);
             this.tpPackages.CustomBackground = false;
             this.tpPackages.HorizontalScrollbar = false;
             this.tpPackages.HorizontalScrollbarBarColor = true;
@@ -383,7 +381,7 @@
             this.btnExit.ActiveControl = null;
             this.btnExit.CustomBackground = false;
             this.btnExit.CustomForeColor = false;
-            this.btnExit.Location = new System.Drawing.Point(181, 253);
+            this.btnExit.Location = new System.Drawing.Point(154, 240);
             this.btnExit.Name = "btnExit";
             this.btnExit.PaintTileCount = true;
             this.btnExit.Size = new System.Drawing.Size(118, 66);
@@ -400,7 +398,7 @@
             this.btnDelete.ActiveControl = null;
             this.btnDelete.CustomBackground = false;
             this.btnDelete.CustomForeColor = false;
-            this.btnDelete.Location = new System.Drawing.Point(57, 253);
+            this.btnDelete.Location = new System.Drawing.Point(30, 240);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.PaintTileCount = true;
             this.btnDelete.Size = new System.Drawing.Size(118, 66);
@@ -417,7 +415,7 @@
             this.btnAdd.ActiveControl = null;
             this.btnAdd.CustomBackground = false;
             this.btnAdd.CustomForeColor = false;
-            this.btnAdd.Location = new System.Drawing.Point(57, 178);
+            this.btnAdd.Location = new System.Drawing.Point(30, 165);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.PaintTileCount = true;
             this.btnAdd.Size = new System.Drawing.Size(118, 66);
@@ -434,7 +432,7 @@
             this.btnEdit.ActiveControl = null;
             this.btnEdit.CustomBackground = false;
             this.btnEdit.CustomForeColor = false;
-            this.btnEdit.Location = new System.Drawing.Point(181, 178);
+            this.btnEdit.Location = new System.Drawing.Point(154, 165);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.PaintTileCount = true;
             this.btnEdit.Size = new System.Drawing.Size(118, 66);
@@ -445,33 +443,6 @@
             this.btnEdit.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnEdit.TileCount = 0;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(54, 107);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 13);
-            this.label8.TabIndex = 52;
-            this.label8.Text = "Search Packages";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.CustomBackground = false;
-            this.txtSearch.CustomForeColor = false;
-            this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.txtSearch.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.txtSearch.Location = new System.Drawing.Point(57, 123);
-            this.txtSearch.Multiline = false;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(223, 23);
-            this.txtSearch.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSearch.StyleManager = this.msmStyle;
-            this.txtSearch.TabIndex = 51;
-            this.txtSearch.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSearch.UseStyleColors = false;
             // 
             // lblPkgName
             // 
@@ -499,24 +470,14 @@
             this.cbPackages.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.cbPackages.FormattingEnabled = true;
             this.cbPackages.ItemHeight = 23;
-            this.cbPackages.Location = new System.Drawing.Point(57, 67);
+            this.cbPackages.Location = new System.Drawing.Point(30, 93);
             this.cbPackages.Name = "cbPackages";
-            this.cbPackages.Size = new System.Drawing.Size(226, 29);
+            this.cbPackages.Size = new System.Drawing.Size(242, 29);
             this.cbPackages.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbPackages.StyleManager = this.msmStyle;
             this.cbPackages.TabIndex = 39;
             this.cbPackages.Theme = MetroFramework.MetroThemeStyle.Light;
             this.cbPackages.SelectedIndexChanged += new System.EventHandler(this.cbPackages_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(54, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Select a Travel Package";
             // 
             // tpProductSuppliers
             // 
@@ -582,11 +543,10 @@
             this.lblProduct.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.lblProduct.Location = new System.Drawing.Point(-1, 0);
             this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(37, 19);
+            this.lblProduct.Size = new System.Drawing.Size(0, 0);
             this.lblProduct.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblProduct.StyleManager = null;
             this.lblProduct.TabIndex = 12;
-            this.lblProduct.Text = "hello";
             this.lblProduct.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblProduct.UseStyleColors = false;
             // 
@@ -601,11 +561,10 @@
             this.lblBy.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.lblBy.Location = new System.Drawing.Point(0, 19);
             this.lblBy.Name = "lblBy";
-            this.lblBy.Size = new System.Drawing.Size(37, 19);
+            this.lblBy.Size = new System.Drawing.Size(0, 0);
             this.lblBy.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblBy.StyleManager = null;
             this.lblBy.TabIndex = 10;
-            this.lblBy.Text = "hello";
             this.lblBy.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblBy.UseStyleColors = false;
             // 
@@ -620,11 +579,10 @@
             this.lblSupplier.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.lblSupplier.Location = new System.Drawing.Point(0, 38);
             this.lblSupplier.Name = "lblSupplier";
-            this.lblSupplier.Size = new System.Drawing.Size(37, 19);
+            this.lblSupplier.Size = new System.Drawing.Size(0, 0);
             this.lblSupplier.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblSupplier.StyleManager = null;
             this.lblSupplier.TabIndex = 11;
-            this.lblSupplier.Text = "hello";
             this.lblSupplier.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblSupplier.UseStyleColors = false;
             // 
@@ -711,11 +669,10 @@
             this.lblProdOrSup.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.lblProdOrSup.Location = new System.Drawing.Point(352, 25);
             this.lblProdOrSup.Name = "lblProdOrSup";
-            this.lblProdOrSup.Size = new System.Drawing.Size(49, 25);
+            this.lblProdOrSup.Size = new System.Drawing.Size(0, 0);
             this.lblProdOrSup.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblProdOrSup.StyleManager = null;
             this.lblProdOrSup.TabIndex = 7;
-            this.lblProdOrSup.Text = "hello";
             this.lblProdOrSup.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblProdOrSup.UseStyleColors = false;
             // 
@@ -814,6 +771,42 @@
             this.dgvProducts.TabIndex = 2;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.CustomBackground = false;
+            this.metroLabel5.CustomForeColor = false;
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.metroLabel5.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.metroLabel5.Location = new System.Drawing.Point(30, 35);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(185, 25);
+            this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel5.StyleManager = this.msmStyle;
+            this.metroLabel5.TabIndex = 72;
+            this.metroLabel5.Text = "Select a Travel Package";
+            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroLabel5.UseStyleColors = false;
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.CustomBackground = false;
+            this.metroLabel10.CustomForeColor = false;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.metroLabel10.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.metroLabel10.Location = new System.Drawing.Point(734, 41);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel10.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel10.StyleManager = this.msmStyle;
+            this.metroLabel10.TabIndex = 73;
+            this.metroLabel10.Text = "Package Image:";
+            this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroLabel10.UseStyleColors = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -852,11 +845,8 @@
         private MetroFramework.Controls.MetroTile btnDelete;
         private MetroFramework.Controls.MetroTile btnAdd;
         private MetroFramework.Controls.MetroTile btnEdit;
-        private System.Windows.Forms.Label label8;
-        private MetroFramework.Controls.MetroTextBox txtSearch;
         private MetroFramework.Controls.MetroLabel lblPkgName;
         private MetroFramework.Controls.MetroComboBox cbPackages;
-        private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
@@ -889,6 +879,8 @@
         private MetroFramework.Controls.MetroButton btnAddProdSup;
         private System.Windows.Forms.Panel pnlNewProdSup;
         private System.Windows.Forms.Label lblEntityMode;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }
 

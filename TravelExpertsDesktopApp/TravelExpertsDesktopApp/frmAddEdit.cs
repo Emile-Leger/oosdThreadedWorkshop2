@@ -47,6 +47,7 @@ namespace TravelExpertsDesktopApp
         //update controls with active package data
         private void displayPackage()
         {
+            
             txtName.Text = activePackage.PkgName;
             txtPrice.Text = activePackage.PkgBasePrice.ToString("c");
             txtCommission.Text = activePackage.PkgAgencyCommission.ToString("c");
@@ -55,11 +56,11 @@ namespace TravelExpertsDesktopApp
             txtDescription.Text = activePackage.PkgDesc;
             if (activePackage.PkgImg.Length != 4)
                 pbImage.Image = MainForm.arrayToImage(activePackage.PkgImg);
+            lvProductSuppliers.Items.Clear();
             foreach (Product_Supplier ps in activePackage.productSuppliers)
             {
                 ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
-                lvProductSuppliers.Items.Add(lvi);
-                //lvProductSuppliers.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                lvProductSuppliers.Items.Add(lvi);               
             }
             
         }
@@ -77,13 +78,13 @@ namespace TravelExpertsDesktopApp
                         if (newID != -1)
                         {
                             newPackage.PackageId = newID;
-                            this.activePackage = newPackage;
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
+                            activePackage = newPackage;
+                            DialogResult = DialogResult.OK;
+                            Close();
                         }
                         else
                         {
-                            this.DialogResult = DialogResult.Abort;//add failed, close the form and display a message
+                            DialogResult = DialogResult.Abort;//add failed, close the form and display a message
                         }
                     }
                     else
@@ -91,12 +92,12 @@ namespace TravelExpertsDesktopApp
 
                         if (TravelExpertsDB.TravelExpertsDB.UpdatePackage(activePackage, newPackage))
                         {
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
+                            DialogResult = DialogResult.OK;
+                            Close();
                         }
                         else
                         {
-                            this.DialogResult = DialogResult.Abort;//update failed, close the form and display message
+                            DialogResult = DialogResult.Abort;//update failed, close the form and display message
                         }
                     }
                 }
@@ -164,16 +165,24 @@ namespace TravelExpertsDesktopApp
 
         private void btnEditProducts_Click(object sender, EventArgs e)
         {
+            frmEditProductSuppliers myForm;
             if (activePackage != null)
             {
-                frmEditProductSuppliers myForm = new frmEditProductSuppliers(activePackage);
+                myForm = new frmEditProductSuppliers(activePackage);
                 myForm.ShowDialog();
             }
             else
             {
                 createPackage();
-                frmEditProductSuppliers myForm = new frmEditProductSuppliers(newPackage);
+                myForm = new frmEditProductSuppliers(newPackage);
                 myForm.ShowDialog();
+            }
+
+            lvProductSuppliers.Items.Clear();
+            foreach (Product_Supplier ps in activePackage.productSuppliers)
+            {
+                ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
+                lvProductSuppliers.Items.Add(lvi);
             }
         }
         
