@@ -23,7 +23,7 @@ namespace TravelExpertsDesktopApp
         const string SUPPLIER_MESSAGE = "Edit Supplier Name";
         const string ADD_MESSAGE = "Enter Package Details";
         const string EDIT_MESSAGE = "Edit Package Details";
-
+        
         private Product activeProduct;
         private Supplier activeSupplier;
         public Package activePackage;
@@ -162,7 +162,6 @@ namespace TravelExpertsDesktopApp
             activePackage.fillSuppliers();
             DisplayPackage();
         }
-
       
         // to clear the textboxes
         private void ClearControls()
@@ -172,10 +171,9 @@ namespace TravelExpertsDesktopApp
             lblPrice.Text = "";
             lblCommission.Text = "";
             lblDescription.Text = "";
-            //txtSearch.Text = "";
+            lblPkgName.Text = "";            
             pbPkgImg.Image = null;
             cbPackages.Focus();
-            //txtSearch.Focus();
             lvProductSuppliers.Items.Clear();             
         }
         //Displays all the data from the active package
@@ -186,9 +184,10 @@ namespace TravelExpertsDesktopApp
             lblDescription.Text = activePackage.PkgDesc;
             lblPrice.Text = activePackage.PkgBasePrice.ToString("c");
             lblCommission.Text = activePackage.PkgAgencyCommission.ToString("c");
+            lblPkgName.Text = activePackage.PkgName;
             cbPackages.Text = activePackage.PackageId.ToString();
             if (activePackage.PkgImg.Length != 4)
-                pbPkgImg.Image = MainForm.arrayToImage(activePackage.PkgImg);
+                pbPkgImg.Image = arrayToImage(activePackage.PkgImg);
             foreach (Product_Supplier ps in activePackage.productSuppliers)
             {
                 ListViewItem lvi = new ListViewItem(new[] { ps.ProductName, ps.SupName });
@@ -198,7 +197,7 @@ namespace TravelExpertsDesktopApp
        
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();            
+            Close();            
         }
 
         //converts a byte array into an image object for display on the form
@@ -218,8 +217,7 @@ namespace TravelExpertsDesktopApp
                 if (result == DialogResult.Yes)
                 {
                     TravelExpertsDB.TravelExpertsDB.RemoveAllProductSuppliersFromPackage(activePackage.PackageId);
-                    TravelExpertsDB.TravelExpertsDB.DeletePackage(activePackage.PackageId);
-                    MessageBox.Show("Successfully deleted " + activePackage);
+                    TravelExpertsDB.TravelExpertsDB.DeletePackage(activePackage.PackageId);                    
                     updatePackages();
                     ClearControls();                    
                 }
@@ -250,7 +248,7 @@ namespace TravelExpertsDesktopApp
         private void btnCreateProdSup_Click(object sender, EventArgs e)
         {
             if (ActiveProduct != null && activeSupplier != null)
-            {                
+            {
                 Product_Supplier newProdSup = createProductSupplier();
                 if (ProdSupDoesNotExist(newProdSup))
                 {
@@ -262,7 +260,7 @@ namespace TravelExpertsDesktopApp
                 {
                     MessageBox.Show(newProdSup + " already exists and was not added.");
                 }
-               
+
             }
         }
 
@@ -287,9 +285,9 @@ namespace TravelExpertsDesktopApp
             }
 
             return false;
-        }        
+        }
 
-        //edits the name of a product or supplier 
+        //edit the name of a product or supplier 
         private void btnEditProdSupp_Click(object sender, EventArgs e)
         {
             //the user wants to edit a product
@@ -332,7 +330,7 @@ namespace TravelExpertsDesktopApp
                 fillDGVs();
             }
         }
-
+        //reset the controls
         public void clearSelectedIndices()
         {
             dgvProducts.ClearSelection();
@@ -347,17 +345,17 @@ namespace TravelExpertsDesktopApp
         //generates a unique supplier ID for creating a new supplier.
         public int GenerateSupplierId()
         {
-            List<Supplier> suppliers = TravelExpertsDB.TravelExpertsDB.GetAllSuppliers();
-            List<Supplier> sortedList = suppliers.OrderBy(x => x.SupplierID).ToList();
+            List<Supplier> suppliers = TravelExpertsDB.TravelExpertsDB.GetAllSuppliers();//check against the database
+            List<Supplier> sortedList = suppliers.OrderBy(x => x.SupplierID).ToList();//order by ascending supplier ID
             int newId = 0;
             foreach (var supplier in sortedList)
             {
-                if (newId == supplier.SupplierID)
+                if (newId == supplier.SupplierID)//the supplier id is taken, next.
                     newId++;
-                else
-                    return newId;
+                else//the supplier id is free
+                    return newId;//use it
             }
-            return -1;
+            return -1;//something has gone horrible wrong
         }      
     }
 }

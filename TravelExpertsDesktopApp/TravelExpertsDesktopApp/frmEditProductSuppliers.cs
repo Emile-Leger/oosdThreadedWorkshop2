@@ -26,21 +26,23 @@ namespace TravelExpertsDesktopApp
             Text = activePackage.PkgName;
             activePackage.fillSuppliers();
         }
+
+        public frmEditProductSuppliers() { }
         //on form load, fill the list of product suppliers and update the display
         private void editProductSuppliers_Load(object sender, EventArgs e)
         {
             prodSups = TravelExpertsDB.TravelExpertsDB.getAllProductSuppliers();
-            updateDisplay();            
+            updateDisplay();
         }
-        
-                        
+
+
         //get the product supplier selected by the user.
         private void dgvProdSups_SelectionChanged(object sender, EventArgs e)
-        {            
+        {
             if (dgvProdSups.SelectedRows.Count != 0)
             {
-                selectedProductSupplier = (Product_Supplier)dgvProdSups.SelectedRows[0].DataBoundItem;                
-            }            
+                selectedProductSupplier = (Product_Supplier)dgvProdSups.SelectedRows[0].DataBoundItem;
+            }
         }
 
         //add the product_Supplier selected from the combo box to the package.
@@ -90,8 +92,8 @@ namespace TravelExpertsDesktopApp
                 MessageBox.Show("Please select a product-supplier to remove.");
             }
         }
-        
-       
+
+
         //method to update the display of the dialog
         private void updateDisplay()
         {
@@ -111,26 +113,40 @@ namespace TravelExpertsDesktopApp
         }
 
         private void btnClose_Click(object sender, EventArgs e)
-        {            
+        {
             this.Close();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            cbProductSuppliers.Items.Clear();            
-            List<Product_Supplier> searchList = SearchProdSups(txtSearch.Text);
-            foreach (var prodsup in searchList)
-            {
-                cbProductSuppliers.Items.Add(prodsup);
-            }
 
-            cbProductSuppliers.DropDownHeight = cbProductSuppliers.MaxDropDownItems * cbProductSuppliers.ItemHeight;
-            if (cbProductSuppliers.DroppedDown == true && cbProductSuppliers.Items.Count != 0)
-            {                
-                cbProductSuppliers.DroppedDown = false;
+
+            cbProductSuppliers.SelectedIndex = -1;
+
+            List<Product_Supplier> searchList = SearchProdSups(txtSearch.Text);
+            if (searchList.Count != 0)
+            {
+                cbProductSuppliers.Items.Clear();
+                foreach (var prodsup in searchList)
+                {
+                    cbProductSuppliers.Items.Add(prodsup);
+                }
+                cbProductSuppliers.DropDownHeight = cbProductSuppliers.MaxDropDownItems * cbProductSuppliers.ItemHeight;                
+                if (cbProductSuppliers.DroppedDown == true && cbProductSuppliers.Items.Count != 0)
+                {
+                    cbProductSuppliers.DroppedDown = false;
+                }
+                cbProductSuppliers.DroppedDown = true;
+                Cursor.Current = Cursors.Default;
             }
-            cbProductSuppliers.DroppedDown = true;
-            Cursor.Current = Cursors.Default;
+            else
+            {
+                cbProductSuppliers.DropDownHeight = cbProductSuppliers.MaxDropDownItems * cbProductSuppliers.ItemHeight;
+                if (cbProductSuppliers.DroppedDown == true && cbProductSuppliers.Items.Count != 0)
+                {
+                    cbProductSuppliers.DroppedDown = false;
+                }
+            }
         }
 
         public List<Product_Supplier> SearchProdSups(string input)
@@ -143,11 +159,17 @@ namespace TravelExpertsDesktopApp
 
         private void cbProductSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbProductSuppliers.SelectedItem != null)
+            {
+                selectedProductSupplier = (Product_Supplier)cbProductSuppliers.SelectedItem;
+                txtSearch.Text = (selectedProductSupplier.ToString() == null) ? "" : selectedProductSupplier.ToString();
+                if (cbProductSuppliers.DroppedDown != false)
+                {
+                    cbProductSuppliers.DroppedDown = false;
+                }
+            }
+        }
 
-            selectedProductSupplier = (Product_Supplier)cbProductSuppliers.SelectedItem;
-            txtSearch.Text = selectedProductSupplier.ToString();
-            cbProductSuppliers.DroppedDown = false;
 
-        }       
     }
 }

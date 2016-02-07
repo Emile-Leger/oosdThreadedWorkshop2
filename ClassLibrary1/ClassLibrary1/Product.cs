@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// coding Doug Sraega
+/// <summary>
+/// Entity class 
+/// </summary>
 namespace TravelExpertsDB
 {
     public class Product

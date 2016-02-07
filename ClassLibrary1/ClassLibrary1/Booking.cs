@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// coding Doug Sraega
+/// <summary>
+///  entity class for booking table
+/// </summary>
 namespace TravelExpertsDB
 {
     public class Booking

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Coding Doug Sarega and Emile Leger
 
 namespace TravelExpertsDB
 {
@@ -260,7 +261,10 @@ namespace TravelExpertsDB
             updateCommand.Parameters.AddWithValue("@newPkgDesc",newPkg.PkgDesc);
             updateCommand.Parameters.AddWithValue("@newPkgBasePrice",newPkg.PkgBasePrice);
             updateCommand.Parameters.AddWithValue("@newPkgAgencyCommission",newPkg.PkgAgencyCommission);
-            updateCommand.Parameters.AddWithValue("@newPkgImg", newPkg.PkgImg);
+            if (newPkg.PkgImg == null)
+                updateCommand.Parameters.AddWithValue("@newPkgImg", SqlDbType.VarBinary);
+            else
+                updateCommand.Parameters.AddWithValue("@newPkgImg", newPkg.PkgImg);
             // old package listing
             updateCommand.Parameters.AddWithValue("@oldPackageId",oldPkg.PackageId);
             updateCommand.Parameters.AddWithValue("@oldPkgName",oldPkg.PkgName);

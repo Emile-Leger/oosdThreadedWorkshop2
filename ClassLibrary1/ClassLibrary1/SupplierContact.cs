@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//coding Doug Sraega
 
 namespace TravelExpertsDB
 {
+    /// <summary>
+    /// entity class Supplier Exports
+    /// </summary>
     public class SupplierContact
     {
         public int SupplierContactId {get;set;} // PK  not found in other table  use fk's 

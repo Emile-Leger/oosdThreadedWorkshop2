@@ -167,7 +167,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmEditProductSuppliers";
-            this.Text = "Edit Product Suppliers";
+            this.Text = "Edit Product Suppliers";            
             this.Load += new System.EventHandler(this.editProductSuppliers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdSups)).EndInit();
             this.ResumeLayout(false);

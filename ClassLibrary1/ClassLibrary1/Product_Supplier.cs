@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace TravelExpertsDB
 {
     //Enity class library for the Product_Suppliers Table
-    // use this to get a row from the table into P
+    // use this to get a row from the table Product Supplier
+    /// <summary>
+    /// entity class  Product Suppluer
+    /// </summary>
     public class Product_Supplier
     {
         public int ProductSupplierId{ get; set; }
